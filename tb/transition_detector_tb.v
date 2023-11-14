@@ -29,6 +29,4 @@ initial begin
     $dumpvars(0, transition_detector_tb);
 end
 
-
-
 endmodule
