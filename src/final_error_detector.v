@@ -5,6 +5,7 @@ module final_error_detector
         output error
     );
 
+
     wire transition, initial_error;
 
     transition_detector TD(.clk(clk), .reset(reset), .data(data), .transition(transition));
