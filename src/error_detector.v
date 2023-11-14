@@ -1,9 +1,9 @@
-module error_detector (output error, input d, clk);
+module error_detector (output error, input data, clk);
     reg q;
 
     always @(posedge clk) begin
-        q <= d;
+        q <= data;
     end 
 
-    assign error = d ^ q;
+    assign error = data ^ q;
 endmodule

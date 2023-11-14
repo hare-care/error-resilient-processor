@@ -1,0 +1,115 @@
+#! /home/ece393/tools/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-331-g77d7f0b8f)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/home/ece393/tools/lib/ivl/system.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/va_math.vpi";
+S_0x17d3e20 .scope module, "transition_detector_tb" "transition_detector_tb" 2 1;
+ .timescale 0 0;
+v0x1823dc0_0 .var "clk", 0 0;
+v0x1823e80_0 .var "data", 0 0;
+v0x1823f50_0 .var "reset", 0 0;
+v0x1824050_0 .net "transition", 0 0, v0x1823b80_0;  1 drivers
+S_0x17d3fb0 .scope module, "dft" "transition_detector" 2 6, 3 1 0, S_0x17d3e20;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "reset";
+    .port_info 2 /INPUT 1 "data";
+    .port_info 3 /OUTPUT 1 "transition";
+P_0x17d4190 .param/l "DATA_WIDTH" 0 3 2, +C4<00000000000000000000000000000001>;
+L_0x7f5e3ca41060 .functor BUFT 1, C4<01>, C4<0>, C4<0>, C4<0>;
+L_0x1824240 .functor AND 2, L_0x1824120, L_0x7f5e3ca41060, C4<11>, C4<11>;
+L_0x1824470 .functor BUFZ 1, L_0x1824380, C4<0>, C4<0>, C4<0>;
+L_0x7f5e3ca410f0 .functor BUFT 1, C4<01>, C4<0>, C4<0>, C4<0>;
+L_0x1824670 .functor OR 2, L_0x1824530, L_0x7f5e3ca410f0, C4<00>, C4<00>;
+L_0x18247b0 .functor NOT 2, L_0x1824670, C4<00>, C4<00>, C4<00>;
+L_0x18249c0 .functor XOR 1, v0x1823e80_0, L_0x18248a0, C4<0>, C4<0>;
+v0x17d4230_0 .net *"_ivl_0", 1 0, L_0x1824120;  1 drivers
+v0x1822f50_0 .net *"_ivl_12", 1 0, L_0x1824530;  1 drivers
+L_0x7f5e3ca410a8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x1823030_0 .net *"_ivl_15", 0 0, L_0x7f5e3ca410a8;  1 drivers
+v0x18230f0_0 .net/2u *"_ivl_16", 1 0, L_0x7f5e3ca410f0;  1 drivers
+v0x18231d0_0 .net *"_ivl_18", 1 0, L_0x1824670;  1 drivers
+v0x1823300_0 .net *"_ivl_20", 1 0, L_0x18247b0;  1 drivers
+L_0x7f5e3ca41018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x18233e0_0 .net *"_ivl_3", 0 0, L_0x7f5e3ca41018;  1 drivers
+v0x18234c0_0 .net/2u *"_ivl_4", 1 0, L_0x7f5e3ca41060;  1 drivers
+v0x18235a0_0 .net *"_ivl_6", 1 0, L_0x1824240;  1 drivers
+v0x1823680_0 .net "and_out", 0 0, L_0x1824380;  1 drivers
+v0x1823760_0 .net "buf_out", 0 0, L_0x1824470;  1 drivers
+v0x1823840_0 .net "clk", 0 0, v0x1823dc0_0;  1 drivers
+v0x1823900_0 .net "data", 0 0, v0x1823e80_0;  1 drivers
+v0x18239e0_0 .net "nor_out", 0 0, L_0x18248a0;  1 drivers
+v0x1823ac0_0 .net "reset", 0 0, v0x1823f50_0;  1 drivers
+v0x1823b80_0 .var "transition", 0 0;
+v0x1823c60_0 .net "xor_out", 0 0, L_0x18249c0;  1 drivers
+E_0x180d6a0 .event posedge, v0x1823c60_0;
+L_0x1824120 .concat [ 1 1 0 0], v0x1823e80_0, L_0x7f5e3ca41018;
+L_0x1824380 .part L_0x1824240, 0, 1;
+L_0x1824530 .concat [ 1 1 0 0], L_0x1824470, L_0x7f5e3ca410a8;
+L_0x18248a0 .part L_0x18247b0, 0, 1;
+    .scope S_0x17d3fb0;
+T_0 ;
+    %wait E_0x180d6a0;
+    %load/vec4 v0x1823ac0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_0.0, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x1823b80_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0x1823840_0;
+    %assign/vec4 v0x1823b80_0, 0;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x17d3e20;
+T_1 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1823f50_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1823dc0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1823e80_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1823f50_0, 0, 1;
+    %delay 15, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1823e80_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1823e80_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1823e80_0, 0, 1;
+    %delay 25, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1823e80_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 2 19 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x17d3e20;
+T_2 ;
+    %load/vec4 v0x1823dc0_0;
+    %inv;
+    %assign/vec4 v0x1823dc0_0, 0;
+    %delay 5, 0;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x17d3e20;
+T_3 ;
+    %vpi_call 2 28 "$dumpfile", "TD.vcd" {0 0 0};
+    %vpi_call 2 29 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x17d3e20 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "transition_detector_tb.v";
+    "transition_detector.v";

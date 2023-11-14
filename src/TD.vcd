@@ -1,0 +1,89 @@
+$date
+	Wed Nov  8 14:31:19 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module transition_detector_tb $end
+$var wire 1 ! transition $end
+$var reg 1 " clk $end
+$var reg 1 # data $end
+$var reg 1 $ reset $end
+$scope module dft $end
+$var wire 1 % buf_out $end
+$var wire 1 " clk $end
+$var wire 1 # data $end
+$var wire 1 $ reset $end
+$var wire 1 & xor_out $end
+$var wire 1 ' nor_out $end
+$var wire 1 ( and_out $end
+$var parameter 32 ) DATA_WIDTH $end
+$var reg 1 ! transition $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 )
+$end
+#0
+$dumpvars
+0(
+0'
+0&
+0%
+1$
+0#
+1"
+x!
+$end
+#5
+0"
+#10
+1"
+0$
+#15
+0"
+#20
+1"
+#25
+1!
+0"
+1%
+1(
+1&
+1#
+#30
+1"
+0%
+0(
+0&
+0#
+#35
+0"
+#40
+0!
+1"
+1%
+1(
+1&
+1#
+#45
+0"
+#50
+1"
+#55
+0"
+#60
+1"
+#65
+0"
+0%
+0(
+0&
+0#
+#70
+1"

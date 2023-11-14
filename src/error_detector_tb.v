@@ -1,15 +1,15 @@
-`timescale 1ns/100ps
-
 module error_detector_tb;
-    reg d;
+    reg data;
     reg clk;
     wire error;
 
-error_detector ED (.error(error), .d(d), .clk(clk));
+error_detector ED (.error(error), .data(data), .clk(clk));
 
 initial begin
     clk = 0;
-    d = 0;
+    data = 0;
+    #70
+    $finish;
 end
 
 always begin
@@ -17,7 +17,7 @@ always begin
 end
 
 always begin
-    #7 d = ~d;
+    #7 data = ~data;
 end
 
 initial begin
