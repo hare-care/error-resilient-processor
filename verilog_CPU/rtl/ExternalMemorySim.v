@@ -10,7 +10,7 @@ module ExternalMemorySim (
 	integer i;
 	reg oen = 0;
 	reg [31:0] outBus;
-	assign bus = (oen ? outBus : 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz);
+	assign bus = (oen ? outBus : 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz); // trying to fix this BS, convert to mux?
 	reg [31:0] mem [SIZE - 1:0];
 	reg [31:0] addr;
 	reg [1:0] state = 0;
