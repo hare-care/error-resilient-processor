@@ -101,11 +101,6 @@ module ROB (
 	reg [6:0] misprReplayEndSqN;
 	reg [3:0] deqAddresses [WIDTH - 1:0];
 	reg [26:0] deqPorts [WIDTH - 1:0];
-	// here
-	always @(*)
-		for (i = 0; i < WIDTH; i = i + 1)
-			deqPorts[i] = entries[{deqAddresses[i], i[1:0]}];
-	// to here, moved line 107 to line 116
 	reg [26:0] deqEntries [WIDTH - 1:0];
 	always @(*) begin : sv2v_autoblock_1
 		reg [5:0] addr;
@@ -113,7 +108,7 @@ module ROB (
 		for (i = 0; i < WIDTH; i = i + 1)
 			begin
 				deqAddresses[addr[1:0]] = addr[5:2];
-				// moved line 107 to here
+				deqPorts[i] = entries[{deqAddresses[i], i[1:0]}];
 				deqEntries[i] = deqPorts[addr[1:0]];
 				addr = addr + 6'b000001;
 			end

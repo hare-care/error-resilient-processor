@@ -72,9 +72,6 @@ module ProgramCounter (
 	reg [2:0] branchPosLast;
 	reg multipleLast;
 	assign OUT_pcRaw = {pc, 1'b0};
-	always @(*)
-		for (i = 0; i < NUM_BLOCKS; i = i + 1)
-			OUT_instrs[(i * 54) + 53-:16]= IN_instr[16 * i+:16]; // move code from here, including loop
 	wire [58:0] PCF_writeData;
 	assign PCF_writeData[58-:31] = pcLast;
 	assign PCF_writeData[15-:16] = histLast;
@@ -118,7 +115,8 @@ module ProgramCounter (
 		else if (IN_write) begin
 			pc <= IN_pc[31:1];
 			fetchID <= IN_fetchID + 1;
-			// move code to here, including loop
+			for (i = 0; i < NUM_BLOCKS; i = i + 1)
+				OUT_instrs[(i * 54) + 53-:16] <= IN_instr[16 * i+:16];
 		end
 		else begin
 			if (en1) begin

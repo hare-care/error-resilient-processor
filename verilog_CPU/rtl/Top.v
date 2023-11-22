@@ -18,11 +18,11 @@ module Top (
 	wire [9:0] MC_progress;
 	wire MC_busy;
 	wire [31:0] DC_dataOut;
-	wire [31:0] EXTMEM_busOut;
+/* 	wire [31:0] EXTMEM_busOut;
 	wire EXTMEM_oen;
 	wire [31:0] EXTMEM_bus = (EXTMEM_oen ? EXTMEM_busOut : 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz);
-	wire EXTMEM_en;
-	MemoryController memc(
+	wire EXTMEM_en; */
+	/* MemoryController memc(
 		.clk(clk),
 		.rst(rst),
 		.IN_ce(MC_ce),
@@ -42,14 +42,14 @@ module Top (
 		.OUT_EXT_oen(EXTMEM_oen),
 		.OUT_EXT_en(EXTMEM_en),
 		.OUT_EXT_bus(EXTMEM_busOut),
-		.IN_EXT_bus(EXTMEM_bus)
-	);
+		.IN_EXT_bus(EXTMEM_bus) */
+	/* ); */
 	assign MC_DC_if[0][61:42] = 0;
-	ExternalMemorySim extMem(
+	/* ExternalMemorySim extMem(
 		.clk(clk),
 		.en(EXTMEM_en && !rst),
 		.bus(EXTMEM_bus)
-	);
+	); */
 	reg [67:0] CORE_DC_if;
 	wire [29:0] CORE_writeAddr;
 	wire [31:0] CORE_writeData;

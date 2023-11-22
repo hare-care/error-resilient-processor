@@ -1,5 +1,5 @@
 {
-    "DESIGN_NAME": "Top",
+    "DESIGN_NAME": "Core",
     "VERILOG_FILES": ["error-resilient-processor/verilog_CPU/rtl/RF.v",
     "error-resilient-processor/verilog_CPU/rtl/hardfloat/addRecFN.v", 
     "error-resilient-processor/verilog_CPU/rtl/hardfloat/compareRecFN.v", 
@@ -40,7 +40,6 @@
     "error-resilient-processor/verilog_CPU/rtl/TagBuffer.v",  
     "error-resilient-processor/verilog_CPU/rtl/IssueQueue.v",  
     "error-resilient-processor/verilog_CPU/rtl/CacheController.v",  
-    "error-resilient-processor/verilog_CPU/rtl/MemoryController.v",   
     "error-resilient-processor/verilog_CPU/rtl/PCFile.v",  
     "error-resilient-processor/verilog_CPU/rtl/LoadStoreUnit.v",  
     "error-resilient-processor/verilog_CPU/rtl/TageTable.v",  
@@ -48,10 +47,8 @@
     "error-resilient-processor/verilog_CPU/rtl/BranchTargetBuffer.v",  
     "error-resilient-processor/verilog_CPU/rtl/ICacheTable.v",  
     "error-resilient-processor/verilog_CPU/rtl/BranchPredictionTable.v",  
-    "error-resilient-processor/verilog_CPU/rtl/ReturnStack.v",  
-    "error-resilient-processor/verilog_CPU/rtl/ExternalMemorySim.v", 
-    "error-resilient-processor/verilog_CPU/rtl/MemRTL.v", 
-    "error-resilient-processor/verilog_CPU/rtl/Top.v"],
+    "error-resilient-processor/verilog_CPU/rtl/ReturnStack.v"
+    ],
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 100
 }
