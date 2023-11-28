@@ -158,19 +158,19 @@ module ControlRegs (
 			writeAddrReg <= IN_writeAddr;
 			dataReg <= IN_data;
 			cRegs64[0] <= cRegs64[0] + 1;
-			cRegs64[1] = cRegs64[1] + 1;
+			cRegs64[1] <= cRegs64[1] + 1;
 			for (i = 0; i < NUM_UOPS; i = i + 1)
 				begin
 					if (ifetchValidReg[i])
-						cRegs64[1] = cRegs64[1] + 1;
+						cRegs64[1] <= cRegs64[1] + 1;
 					if (IN_comValid[i] && !IN_mispredFlush)
-						cRegs64[3] = cRegs64[3] + 1;
+						cRegs64[3] <= cRegs64[3] + 1;
 					if ((IN_comValid[i] && !IN_mispredFlush) && IN_comBranch[i])
-						cRegs64[5] = cRegs64[5] + 1;
+						cRegs64[5] <= cRegs64[5] + 1;
 				end
 			for (i = 0; i < NUM_WBS; i = i + 1)
 				if (IN_wbValid[i])
-					cRegs64[2] = cRegs64[2] + 1;
+					cRegs64[2] <= cRegs64[2] + 1;
 			if (IN_branchMispred)
 				cRegs64[4] <= cRegs64[4] + 1;
 		end

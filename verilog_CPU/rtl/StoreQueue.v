@@ -45,7 +45,7 @@ module StoreQueue (
 			if (entries[i][74])
 				empty = 0;
 	end
-	reg [74:0] evicted [1:0];
+	reg [74:0] evicted [2:0];
 	reg [3:0] lookupMask;
 	reg [31:0] lookupData;
 	always @(*) begin

@@ -1,0 +1,861 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2018 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 18.14-s037_1, built Wed Mar 27 10:19:21 PDT 2019
+Options: 
+Date:    Mon Nov 27 20:05:23 2023
+Host:    nightwing.ece.northwestern.edu (x86_64 w/Linux 4.18.0-513.5.1.el8_9.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB) (15950480KB)
+OS:      Red Hat Enterprise Linux release 8.9 (Ootpa)
+
+Checking out license: Genus_Synthesis
+
+Loading tool scripts...
+
+Finished loading tool scripts (5 seconds elapsed).
+
+WARNING: This version of the tool is 1706 days old.
+@genus:root: 1> read_hdl ../ RF.v   hardfloat/addRecFN.v   hardfloat/compareRecFN.v   hardfloat/fNToRecFN.v   hardfloat/HardFloat_primitives.v   hardfloat/HardFloat_specialize.v   hardfloat/recFNToIN.v   hardfloat/recFNToFN.v   hardfloat/mulRecFN.v   hardfloat/HardFloat_rawFN.v   hardfloat/isSigNaNRecFN.v   hardfloat/iNToRecFN.v      hardfloat/divSqrtRecFN_small.v   Core.v   InstrDecoder.v  IntALU.v   Load.v   AGU.v   StoreAGU.v   ProgramCounter.v   Rename.v   FPU.v   FDiv.v   FMul.v    ROB.v   BranchPredictor.v   IndirectBranchPredictor.v   LoadBuffer.v   StoreQueue.v   Multiply.v   Divide.v   ControlRegs.v   PopCnt.v   LZCnt.v   BranchSelector.v   PreDecode.v   RenameTable.v   TagBuffer.v   IssueQueue.v   CacheController.v      PCFile.v   LoadStoreUnit.v   TageTable.v   TagePredictor.v   BranchTargetBuffer.v   ICacheTable.v   BranchPredictionTable.v   ReturnStack.v
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../'.
+        : The specified file could not be opened.  Check the value of the init_hdl_search_path attribute.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'RF.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/addRecFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/compareRecFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/fNToRecFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/HardFloat_primitives.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/HardFloat_specialize.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/recFNToIN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/recFNToFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/mulRecFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/HardFloat_rawFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/isSigNaNRecFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/iNToRecFN.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'hardfloat/divSqrtRecFN_small.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'Core.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'InstrDecoder.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'IntALU.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'Load.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'AGU.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'StoreAGU.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'ProgramCounter.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'Rename.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'FPU.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'FDiv.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'FMul.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'ROB.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'BranchPredictor.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'IndirectBranchPredictor.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'LoadBuffer.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'StoreQueue.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'Multiply.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'Divide.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'ControlRegs.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'PopCnt.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'LZCnt.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'BranchSelector.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'PreDecode.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'RenameTable.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'TagBuffer.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'IssueQueue.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'CacheController.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'PCFile.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'LoadStoreUnit.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'TageTable.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'TagePredictor.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'BranchTargetBuffer.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'ICacheTable.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'BranchPredictionTable.v'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'ReturnStack.v'.
+@genus:root: 2> read_hdl ../RF.v
+@genus:root: 3> read_hdl   iverilog -v  ../RF.v   ../hardfloat/addRecFN.v   ../hardfloat/compareRecFN.v   ../hardfloat/fNToRecFN.v   ../hardfloat/HardFloat_primitives.v   ../hardfloat/HardFloat_specialize.v   ../hardfloat/recFNToIN.v   ../hardfloat/recFNToFN.v   ../hardfloat/mulRecFN.v   ../hardfloat/HardFloat_rawFN.v   ../hardfloat/isSigNaNRecFN.v   ../hardfloat/iNToRecFN.v      ../hardfloat/divSqrtRecFN_small.v   ../Core.v   ../InstrDecoder.v  ../IntALU.v   ../Load.v   ../AGU.v   ../StoreAGU.v   ../ProgramCounter.v   ../Rename.v   ../FPU.v   ../FDiv.v   ../FMul.v    ../ROB.v   ../BranchPredictor.v   ../IndirectBranchPredictor.v   ../LoadBuffer.v   ../StoreQueue.v   ../Multiply.v   ../Divide.v   ../ControlRegs.v   ../PopCnt.v   ../LZCnt.v   ../BranchSelector.v   ../PreDecode.v   ../RenameTable.v   ../TagBuffer.v   ../IssueQueue.v   ../CacheController.v      ../PCFile.v   ../LoadStoreUnit.v   ../TageTable.v   ../TagePredictor.v   ../BranchTargetBuffer.v   ../ICacheTable.v   ../BranchPredictionTable.v   ../Ret
+Warning : Cannot open file. [VLOGPT-650]
+        : File 'iverilog'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '-v'.
+module RF (
+        |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'RF' with Verilog module in file '../RF.v' on line 1, column 9.
+        : A Verilog description is replaced when a new description of the same name and same library is read again.
+    Verilog descriptions are:
+       module
+       macromodule
+    SystemVerilog adds the following descriptions:
+       interface
+       program
+       package.
+	integer i = 0;
+	             |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../IntALU.v' on line 33, column 15.
+        : The following constructs will be ignored:
+    - initial block
+    - final block
+    - program block
+    - property block
+    - sequence block
+    - covergroup
+    - checker block
+    - gate drive strength
+    - system task enable
+    - reg declaration with initial value
+    - specify block.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Ret'.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'RF' in library 'default' with newly read Verilog module 'RF' in the same library in file '../RF.v' on line 1.
+        : A newly read VHDL entity replaces any previously read Verilog module or VHDL entity in the same library if its name matches (case-insensitively) the existing module or entity.
+    For instance:
+        VHDL 'foo'                  replaces  VHDL {'FOO' or 'foo' or 'Foo' or ...} in the same library
+        VHDL 'foo' (in any library) replaces  Verilog {'FOO' or 'foo' or 'Foo' or ...} in the same library
+ 
+A newly read Verilog module replaces any previously read Verilog module if its name matches (case-sensitively) that module.  Further, it replaces any previously read VHDL entity in the same library if its name matches (case -insensitively) that entity.
+    For instance:
+        Verilog 'foo' replaces    VHDL {'FOO' or 'foo' or 'Foo' or ...} in the same library
+        Verilog 'foo' replaces    Verilog 'foo' only
+    In addition:
+        Verilog 'foo' does not replace Verilog 'FOO' and the two remain as distinct modules.
+@genus:root: 4> read_hdl ../RF.v   ../hardfloat/addRecFN.v   ../hardfloat/compareRecFN.v   ../hardfloat/fNToRecFN.v   ../hardfloat/HardFloat_primitives.v   ../hardfloat/HardFloat_specialize.v   ../hardfloat/recFNToIN.v   ../hardfloat/recFNToFN.v   ../hardfloat/mulRecFN.v   ../hardfloat/HardFloat_rawFN.v   ../hardfloat/isSigNaNRecFN.v   ../hardfloat/iNToRecFN.v      ../hardfloat/divSqrtRecFN_small.v   ../Core.v   ../InstrDecoder.v  ../IntALU.v   ../Load.v   ../AGU.v   ../StoreAGU.v   ../ProgramCounter.v   ../Rename.v   ../FPU.v   ../FDiv.v   ../FMul.v    ../ROB.v   ../BranchPredictor.v   ../IndirectBranchPredictor.v   ../LoadBuffer.v   ../StoreQueue.v   ../Multiply.v   ../Divide.v   ../ControlRegs.v   ../PopCnt.v   ../LZCnt.v   ../BranchSelector.v   ../PreDecode.v   ../RenameTable.v   ../TagBuffer.v   ../IssueQueue.v   ../CacheController.v      ../PCFile.v   ../LoadStoreUnit.v   ../TageTable.v   ../TagePredictor.v   ../BranchTargetBuffer.v   ../ICacheTable.v   ../BranchPredictionTable.v   ../ReturnStack.v
+module RF (
+        |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'RF' with Verilog module in file '../RF.v' on line 1, column 9.
+    addRecFNToRaw#(parameter expWidth = 3, parameter sigWidth = 3) (
+                |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'addRecFNToRaw' with Verilog module in file '../hardfloat/addRecFN.v' on line 67, column 17.
+    addRecFN#(parameter expWidth = 3, parameter sigWidth = 3) (
+           |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'addRecFN' with Verilog module in file '../hardfloat/addRecFN.v' on line 237, column 12.
+    compareRecFN#(parameter expWidth = 3, parameter sigWidth = 3) (
+               |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'compareRecFN' with Verilog module in file '../hardfloat/compareRecFN.v' on line 41, column 16.
+    fNToRecFN#(parameter expWidth = 3, parameter sigWidth = 3) (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'fNToRecFN' with Verilog module in file '../hardfloat/fNToRecFN.v' on line 41, column 13.
+    reverse#(parameter width = 1) (
+          |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'reverse' with Verilog module in file '../hardfloat/HardFloat_primitives.v' on line 41, column 11.
+    lowMaskHiLo#(
+              |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'lowMaskHiLo' with Verilog module in file '../hardfloat/HardFloat_primitives.v' on line 58, column 15.
+    lowMaskLoHi#(
+              |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'lowMaskLoHi' with Verilog module in file '../hardfloat/HardFloat_primitives.v' on line 85, column 15.
+    countLeadingZeros#(parameter inWidth = 1, parameter countWidth = 1) (
+                    |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'countLeadingZeros' with Verilog module in file '../hardfloat/HardFloat_primitives.v' on line 112, column 21.
+    compressBy2#(parameter inWidth = 1) (
+              |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'compressBy2' with Verilog module in file '../hardfloat/HardFloat_primitives.v' on line 140, column 15.
+    compressBy4#(parameter inWidth = 1) (
+              |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'compressBy4' with Verilog module in file '../hardfloat/HardFloat_primitives.v' on line 159, column 15.
+    iNFromException#(parameter width = 1) (
+                  |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'iNFromException' with Verilog module in file '../hardfloat/HardFloat_specialize.v' on line 41, column 19.
+    recFNToIN#(
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'recFNToIN' with Verilog module in file '../hardfloat/recFNToIN.v' on line 68, column 13.
+    recFNToFN#(parameter expWidth = 8, parameter sigWidth = 24) (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'recFNToFN' with Verilog module in file '../hardfloat/recFNToFN.v' on line 41, column 13.
+    mulRecFNToFullRaw#(parameter expWidth = 3, parameter sigWidth = 3) (
+                    |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'mulRecFNToFullRaw' with Verilog module in file '../hardfloat/mulRecFN.v' on line 68, column 21.
+    mulRecFNToRaw#(parameter expWidth = 3, parameter sigWidth = 3) (
+                |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'mulRecFNToRaw' with Verilog module in file '../hardfloat/mulRecFN.v' on line 143, column 17.
+    mulRecFN#(parameter expWidth = 3, parameter sigWidth = 3) (
+           |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'mulRecFN' with Verilog module in file '../hardfloat/mulRecFN.v' on line 219, column 12.
+    recFNToRawFN#(parameter expWidth = 3, parameter sigWidth = 3) (
+               |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'recFNToRawFN' with Verilog module in file '../hardfloat/HardFloat_rawFN.v' on line 67, column 16.
+    roundAnyRawFNToRecFN#(
+                       |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'roundAnyRawFNToRecFN' with Verilog module in file '../hardfloat/HardFloat_rawFN.v' on line 97, column 24.
+    roundRawFNToRecFN#(
+                    |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'roundRawFNToRecFN' with Verilog module in file '../hardfloat/HardFloat_rawFN.v' on line 347, column 21.
+    isSigNaNRecFN#(parameter expWidth = 3, parameter sigWidth = 3) (
+                |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'isSigNaNRecFN' with Verilog module in file '../hardfloat/isSigNaNRecFN.v' on line 41, column 17.
+    iNToRawFN#(parameter intWidth = 1) (signedIn, in, isZero, sign, sExp, sig);
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'iNToRawFN' with Verilog module in file '../hardfloat/iNToRecFN.v' on line 67, column 13.
+    iNToRecFN#(
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'iNToRecFN' with Verilog module in file '../hardfloat/iNToRecFN.v' on line 110, column 13.
+    divSqrtRecFNToRaw_small#(
+                          |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'divSqrtRecFNToRaw_small' with Verilog module in file '../hardfloat/divSqrtRecFN_small.v' on line 73, column 27.
+    divSqrtRecFN_small#(
+                     |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'divSqrtRecFN_small' with Verilog module in file '../hardfloat/divSqrtRecFN_small.v' on line 312, column 22.
+module Core (
+          |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'Core' with Verilog module in file '../Core.v' on line 1, column 11.
+module InstrDecoder (
+                  |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'InstrDecoder' with Verilog module in file '../InstrDecoder.v' on line 1, column 19.
+module IntALU (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'IntALU' with Verilog module in file '../IntALU.v' on line 1, column 13.
+	integer i = 0;
+	             |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial value assignment to reg in file '../IntALU.v' on line 33, column 15.
+module Load (
+          |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'Load' with Verilog module in file '../Load.v' on line 1, column 11.
+module AGU (
+         |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'AGU' with Verilog module in file '../AGU.v' on line 1, column 10.
+module StoreAGU (
+              |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'StoreAGU' with Verilog module in file '../StoreAGU.v' on line 1, column 15.
+module ProgramCounter (
+                    |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'ProgramCounter' with Verilog module in file '../ProgramCounter.v' on line 1, column 21.
+module Rename (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'Rename' with Verilog module in file '../Rename.v' on line 1, column 13.
+module FPU (
+         |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'FPU' with Verilog module in file '../FPU.v' on line 1, column 10.
+module FDiv (
+          |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'FDiv' with Verilog module in file '../FDiv.v' on line 1, column 11.
+module FMul (
+          |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'FMul' with Verilog module in file '../FMul.v' on line 1, column 11.
+module ROB (
+         |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'ROB' with Verilog module in file '../ROB.v' on line 1, column 10.
+module BranchPredictor (
+                     |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'BranchPredictor' with Verilog module in file '../BranchPredictor.v' on line 1, column 22.
+module IndirectBranchPredictor (
+                             |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'IndirectBranchPredictor' with Verilog module in file '../IndirectBranchPredictor.v' on line 1, column 30.
+module LoadBuffer (
+                |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'LoadBuffer' with Verilog module in file '../LoadBuffer.v' on line 1, column 17.
+module StoreQueue (
+                |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'StoreQueue' with Verilog module in file '../StoreQueue.v' on line 1, column 17.
+module Multiply (
+              |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'Multiply' with Verilog module in file '../Multiply.v' on line 1, column 15.
+module Divide (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'Divide' with Verilog module in file '../Divide.v' on line 1, column 13.
+module ControlRegs (
+                 |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'ControlRegs' with Verilog module in file '../ControlRegs.v' on line 1, column 18.
+module PopCnt (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'PopCnt' with Verilog module in file '../PopCnt.v' on line 1, column 13.
+module LZCnt (
+           |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'LZCnt' with Verilog module in file '../LZCnt.v' on line 1, column 12.
+module BranchSelector (
+                    |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'BranchSelector' with Verilog module in file '../BranchSelector.v' on line 1, column 21.
+module PreDecode (
+               |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'PreDecode' with Verilog module in file '../PreDecode.v' on line 1, column 16.
+module RenameTable (
+                 |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'RenameTable' with Verilog module in file '../RenameTable.v' on line 1, column 18.
+module TagBuffer (
+               |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'TagBuffer' with Verilog module in file '../TagBuffer.v' on line 1, column 16.
+module IssueQueue (
+                |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'IssueQueue' with Verilog module in file '../IssueQueue.v' on line 1, column 17.
+module CacheController (
+                     |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'CacheController' with Verilog module in file '../CacheController.v' on line 1, column 22.
+module PCFile (
+            |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'PCFile' with Verilog module in file '../PCFile.v' on line 1, column 13.
+module LoadStoreUnit (
+                   |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'LoadStoreUnit' with Verilog module in file '../LoadStoreUnit.v' on line 1, column 20.
+module TageTable (
+               |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'TageTable' with Verilog module in file '../TageTable.v' on line 1, column 16.
+module TagePredictor (
+                   |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'TagePredictor' with Verilog module in file '../TagePredictor.v' on line 1, column 20.
+module BranchTargetBuffer (
+                        |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'BranchTargetBuffer' with Verilog module in file '../BranchTargetBuffer.v' on line 1, column 25.
+module ICacheTable (
+                 |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'ICacheTable' with Verilog module in file '../ICacheTable.v' on line 1, column 18.
+module BranchPredictionTable (
+                           |
+Warning : Replacing previously read Verilog description. [VLOGPT-6]
+        : Replacing Verilog description 'BranchPredictionTable' with Verilog module in file '../BranchPredictionTable.v' on line 1, column 28.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'RF' in library 'default' with newly read Verilog module 'RF' in the same library in file '../RF.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'addRecFNToRaw' in library 'default' with newly read Verilog module 'addRecFNToRaw' in the same library in file '../hardfloat/addRecFN.v' on line 67.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'addRecFN' in library 'default' with newly read Verilog module 'addRecFN' in the same library in file '../hardfloat/addRecFN.v' on line 237.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'compareRecFN' in library 'default' with newly read Verilog module 'compareRecFN' in the same library in file '../hardfloat/compareRecFN.v' on line 41.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'fNToRecFN' in library 'default' with newly read Verilog module 'fNToRecFN' in the same library in file '../hardfloat/fNToRecFN.v' on line 41.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'reverse' in library 'default' with newly read Verilog module 'reverse' in the same library in file '../hardfloat/HardFloat_primitives.v' on line 41.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'lowMaskHiLo' in library 'default' with newly read Verilog module 'lowMaskHiLo' in the same library in file '../hardfloat/HardFloat_primitives.v' on line 58.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'lowMaskLoHi' in library 'default' with newly read Verilog module 'lowMaskLoHi' in the same library in file '../hardfloat/HardFloat_primitives.v' on line 85.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'countLeadingZeros' in library 'default' with newly read Verilog module 'countLeadingZeros' in the same library in file '../hardfloat/HardFloat_primitives.v' on line 112.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'compressBy2' in library 'default' with newly read Verilog module 'compressBy2' in the same library in file '../hardfloat/HardFloat_primitives.v' on line 140.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'compressBy4' in library 'default' with newly read Verilog module 'compressBy4' in the same library in file '../hardfloat/HardFloat_primitives.v' on line 159.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'iNFromException' in library 'default' with newly read Verilog module 'iNFromException' in the same library in file '../hardfloat/HardFloat_specialize.v' on line 41.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'recFNToIN' in library 'default' with newly read Verilog module 'recFNToIN' in the same library in file '../hardfloat/recFNToIN.v' on line 68.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'recFNToFN' in library 'default' with newly read Verilog module 'recFNToFN' in the same library in file '../hardfloat/recFNToFN.v' on line 41.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'mulRecFNToFullRaw' in library 'default' with newly read Verilog module 'mulRecFNToFullRaw' in the same library in file '../hardfloat/mulRecFN.v' on line 68.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'mulRecFNToRaw' in library 'default' with newly read Verilog module 'mulRecFNToRaw' in the same library in file '../hardfloat/mulRecFN.v' on line 143.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'mulRecFN' in library 'default' with newly read Verilog module 'mulRecFN' in the same library in file '../hardfloat/mulRecFN.v' on line 219.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'recFNToRawFN' in library 'default' with newly read Verilog module 'recFNToRawFN' in the same library in file '../hardfloat/HardFloat_rawFN.v' on line 67.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'roundAnyRawFNToRecFN' in library 'default' with newly read Verilog module 'roundAnyRawFNToRecFN' in the same library in file '../hardfloat/HardFloat_rawFN.v' on line 97.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'roundRawFNToRecFN' in library 'default' with newly read Verilog module 'roundRawFNToRecFN' in the same library in file '../hardfloat/HardFloat_rawFN.v' on line 347.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'isSigNaNRecFN' in library 'default' with newly read Verilog module 'isSigNaNRecFN' in the same library in file '../hardfloat/isSigNaNRecFN.v' on line 41.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'iNToRawFN' in library 'default' with newly read Verilog module 'iNToRawFN' in the same library in file '../hardfloat/iNToRecFN.v' on line 67.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'iNToRecFN' in library 'default' with newly read Verilog module 'iNToRecFN' in the same library in file '../hardfloat/iNToRecFN.v' on line 110.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'divSqrtRecFNToRaw_small' in library 'default' with newly read Verilog module 'divSqrtRecFNToRaw_small' in the same library in file '../hardfloat/divSqrtRecFN_small.v' on line 73.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'divSqrtRecFN_small' in library 'default' with newly read Verilog module 'divSqrtRecFN_small' in the same library in file '../hardfloat/divSqrtRecFN_small.v' on line 312.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'Core' in library 'default' with newly read Verilog module 'Core' in the same library in file '../Core.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'InstrDecoder' in library 'default' with newly read Verilog module 'InstrDecoder' in the same library in file '../InstrDecoder.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'IntALU' in library 'default' with newly read Verilog module 'IntALU' in the same library in file '../IntALU.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'Load' in library 'default' with newly read Verilog module 'Load' in the same library in file '../Load.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'AGU' in library 'default' with newly read Verilog module 'AGU' in the same library in file '../AGU.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'StoreAGU' in library 'default' with newly read Verilog module 'StoreAGU' in the same library in file '../StoreAGU.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'ProgramCounter' in library 'default' with newly read Verilog module 'ProgramCounter' in the same library in file '../ProgramCounter.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'Rename' in library 'default' with newly read Verilog module 'Rename' in the same library in file '../Rename.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'FPU' in library 'default' with newly read Verilog module 'FPU' in the same library in file '../FPU.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'FDiv' in library 'default' with newly read Verilog module 'FDiv' in the same library in file '../FDiv.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'FMul' in library 'default' with newly read Verilog module 'FMul' in the same library in file '../FMul.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'ROB' in library 'default' with newly read Verilog module 'ROB' in the same library in file '../ROB.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'BranchPredictor' in library 'default' with newly read Verilog module 'BranchPredictor' in the same library in file '../BranchPredictor.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'IndirectBranchPredictor' in library 'default' with newly read Verilog module 'IndirectBranchPredictor' in the same library in file '../IndirectBranchPredictor.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'LoadBuffer' in library 'default' with newly read Verilog module 'LoadBuffer' in the same library in file '../LoadBuffer.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'StoreQueue' in library 'default' with newly read Verilog module 'StoreQueue' in the same library in file '../StoreQueue.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'Multiply' in library 'default' with newly read Verilog module 'Multiply' in the same library in file '../Multiply.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'Divide' in library 'default' with newly read Verilog module 'Divide' in the same library in file '../Divide.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'ControlRegs' in library 'default' with newly read Verilog module 'ControlRegs' in the same library in file '../ControlRegs.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'PopCnt' in library 'default' with newly read Verilog module 'PopCnt' in the same library in file '../PopCnt.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'LZCnt' in library 'default' with newly read Verilog module 'LZCnt' in the same library in file '../LZCnt.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'BranchSelector' in library 'default' with newly read Verilog module 'BranchSelector' in the same library in file '../BranchSelector.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'PreDecode' in library 'default' with newly read Verilog module 'PreDecode' in the same library in file '../PreDecode.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'RenameTable' in library 'default' with newly read Verilog module 'RenameTable' in the same library in file '../RenameTable.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'TagBuffer' in library 'default' with newly read Verilog module 'TagBuffer' in the same library in file '../TagBuffer.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'IssueQueue' in library 'default' with newly read Verilog module 'IssueQueue' in the same library in file '../IssueQueue.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'CacheController' in library 'default' with newly read Verilog module 'CacheController' in the same library in file '../CacheController.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'PCFile' in library 'default' with newly read Verilog module 'PCFile' in the same library in file '../PCFile.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'LoadStoreUnit' in library 'default' with newly read Verilog module 'LoadStoreUnit' in the same library in file '../LoadStoreUnit.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'TageTable' in library 'default' with newly read Verilog module 'TageTable' in the same library in file '../TageTable.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'TagePredictor' in library 'default' with newly read Verilog module 'TagePredictor' in the same library in file '../TagePredictor.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'BranchTargetBuffer' in library 'default' with newly read Verilog module 'BranchTargetBuffer' in the same library in file '../BranchTargetBuffer.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'ICacheTable' in library 'default' with newly read Verilog module 'ICacheTable' in the same library in file '../ICacheTable.v' on line 1.
+Warning : Replacing previously read Verilog module or VHDL entity. [HPT-76]
+        : Replacing Verilog module 'BranchPredictionTable' in library 'default' with newly read Verilog module 'BranchPredictionTable' in the same library in file '../BranchPredictionTable.v' on line 1.
+@genus:root: 5> set_db library /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+
+Threads Configured:3
+
+  Message Summary for Library NangateOpenCellLibrary_typical.lib:
+  ***************************************************************
+  Could not find an attribute in the library. [LBR-436]: 147
+  An unsupported construct was detected in this library. [LBR-40]: 1
+  ***************************************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.100000, 25.000000) in library 'NangateOpenCellLibrary_typical.lib'.
+        : The nominal operating condition represents either the nominal PVT values if specified in the library source, or the default PVT values (1.0, 1.0, 1.0).
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_X1' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Otherwise, the library cell will be marked as unusable and as timing model.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X16' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X16' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X32' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X32' must have an output pin.
+  Setting attribute of root '/': 'library' = /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+1 /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+@genus:root: 6> set_db lef_library /vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_4' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_1' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_2' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_3' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_5' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_6' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_7' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via1_8' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_8' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_4' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_5' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_7' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_6' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_1' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_2' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via2_3' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via3_2' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via3_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via3_1' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via4_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via5_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via6_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via7_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via8_0' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned. [PHYS-129]
+        : Via 'via9_0' has no resistance value.
+
+  According to lef_library, there are total 10 routing layers [ V(5) / H(5) ]
+
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.07, 0.8) of 'WIDTH' for layers 'metal3' and 'metal9' is too large.
+        : Check the consistency of the parameters.
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.14, 1.6) of 'PITCH' for layers 'metal3' and 'metal9' is too large.
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.065, 0.8) of 'MINSPACING' for layers 'metal1' and 'metal10' is too large.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_1' is non-monotonic.
+        : Non-monotonic wireload models can cause problems during synthesis and/or mapping.  Raising some of the points in the curve to give it a monotonic shape.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_4' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_4' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_4' is non-monotonic.
+  Setting attribute of root '/': 'lef_library' = /vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef
+1 /vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef
+@genus:root: 7> elaborate
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_4' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_4' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_1' is non-monotonic.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'mulRecFNToFullRaw' from file '../hardfloat/mulRecFN.v'.
+Warning : Using default parameter value for module elaboration. [CDFG-818]
+        : Elaborating block 'mulRecFNToFullRaw' with default parameters value.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'mulRecFNToFullRaw'.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'Core' from file '../Core.v'.
+Warning : Using default parameter value for module elaboration. [CDFG-818]
+        : Elaborating block 'Core' with default parameters value.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'disableMispredFlush' in module 'BranchSelector' in file '../BranchSelector.v' on line 47.
+        : A flip-flop or latch that was inferred for an unused signal or variable was removed. Set the hdl_preserve_unused_registers attribute to true to preserve the flip-flop or latch.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'lastProgress' in module 'ICacheTable' in file '../ICacheTable.v' on line 49.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'gHistoryCom' in module 'BranchPredictor' in file '../BranchPredictor.v' on line 92.
+Warning : Ignored redundant case item. [CDFG-480]
+        : Case item '00101' in module 'InstrDecoder'.
+        : When multiple case item expressions match the case condition, only the statements associated with the first matching item are considered.
+Warning : Unreachable statements for case item. [CDFG-472]
+        : Case item 5 in module 'InstrDecoder'.
+Warning : Ignored redundant case item. [CDFG-480]
+        : Case item '00101' in module 'InstrDecoder'.
+Warning : Unreachable statements for case item. [CDFG-472]
+        : Case item 5 in module 'InstrDecoder'.
+Warning : Ignored redundant case item. [CDFG-480]
+        : Case item '00101' in module 'InstrDecoder'.
+Warning : Unreachable statements for case item. [CDFG-472]
+        : Case item 5 in module 'InstrDecoder'.
+Warning : Ignored redundant case item. [CDFG-480]
+        : Case item '00101' in module 'InstrDecoder'.
+Warning : Unreachable statements for case item. [CDFG-472]
+        : Case item 5 in module 'InstrDecoder'.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../RenameTable.v' on line 59.
+        : Loop body will not be synthesized.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../RenameTable.v' on line 59.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused latch register 'dbgUsed' in module 'TagBuffer' in file '../TagBuffer.v' on line 38.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../Rename.v' on line 157.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+        : The prefix expression of a replication generally must evaluate to a positive constant.  The value of a replication with a non-positive prefix depends on the setting of the attribute 'hdl_zero_replicate_is_null'.  If true, the replication is treated as a zero-width expression.  If false, the replication evaluates to 1'b0.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../IssueQueue.v' on line 156.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Detected non-positive value for replication prefix. [CDFG-236]
+        : Prefix value = 0; replication evaluates to null in file '../IssueQueue.v' on line 140, column 44.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../IssueQueue.v' on line 156.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../IssueQueue.v' on line 156.
+Warning : Loop condition is always false. [CDFG-485]
+        : 'for' loop condition is always false in file '../IssueQueue.v' on line 156.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'outFU[0]' in module 'Load' in file '../Load.v' on line 55.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'outFU[1]' in module 'Load' in file '../Load.v' on line 55.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'outFU[2]' in module 'Load' in file '../Load.v' on line 55.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused flip-flop register 'outFU[3]' in module 'Load' in file '../Load.v' on line 55.
+Warning : Removing unused register. [CDFG-508]
+        : Removing unused latch register 'resPopCnt' in module 'PopCnt' in file '../PopCnt.v' on line 13.
+Warning : Index out of bounds. [CDFG-287]
+        : Index 2 is out of bounds for array 'evicted[1:0]' in file '../StoreQueue.v' on line 141.
+        : Ensure that the desired index is specified correctly in the HDL.
+Error   : Could not resolve complex expression. [CDFG-200] [elaborate]
+        : Could not find expression 'evicted' in module 'StoreQueue' in file '../StoreQueue.v' on line 141.
+        : Error during elaboration.
+Info    : Error in Elaborating Design. [ELAB-4]
+        : Module 'Core' contains errors and cannot be elaborated.
+1
+
+Another Ctrl-C within 1 second will terminate the tool.
+@genus:root: 8> elaborate
+UM:  flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:            38            900                                      elaborate
+@genus:root: 9> elaborate
+     flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:             0              8                                      elaborate
+@genus:root: 10> elaborate
+     flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:             1             66                                      elaborate
+@genus:root: 11> set_db library /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+Freeing libraries in memory (/vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.100000, 25.000000) in library 'NangateOpenCellLibrary_typical.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X1' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X16' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X16' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X32' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'FILLCELL_X32' must have an output pin.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '5K_hvratio_1_4' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '3K_hvratio_1_4' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_1' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_2' is non-monotonic.
+Warning : Non-monotonic wireload model found. [LBR-81]
+        : 'Length' table in wireload model '1K_hvratio_1_4' is non-monotonic.
+  Setting attribute of root '/': 'library' = /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+1 /vol/ece303/genus_tutorial/NangateOpenCellLibrary_typical.lib
+@genus:root: 12> set_db lef_library /vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef
+Error   : Lef files are read when design exists. [PHYS-6187] [set_db]
+        : Lef files, if any, should be read before 'elaboration'.
+        : Set the 'lef_library' attribute before doing 'elab'.
+Error   : The data value for this attribute is invalid. [TUI-24] [set_db]
+        : The value '/vol/ece303/genus_tutorial/NangateOpenCellLibrary.lef' cannot be set for attribute 'lef_library'.
+        : To see the usage/description for this attribute, type '::legacy::set_attribute -h <attr_name> *' (in legacy UI mode) or 'help * <attr_name> -detail' (in CUI mode).
+1
+
+Another Ctrl-C within 1 second will terminate the tool.
+Abnormal exit.
