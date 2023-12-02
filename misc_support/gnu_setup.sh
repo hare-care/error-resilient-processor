@@ -8,3 +8,4 @@ setenv PATH $PATH\:~/opt/riscv/bin
 ./configure --prefix=../opt/riscv --with-arch=rv32gc --with-abi=ilp32d
 make clean
 make
+unsetenv LD_LIBRARY_PATH
