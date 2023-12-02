@@ -1,3 +1,4 @@
 //test
 *.vcd
 build
+openlane_run
