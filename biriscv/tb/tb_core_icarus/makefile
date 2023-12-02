@@ -46,6 +46,7 @@ $(BUILD_DIR):
 
 $(BUILD_DIR)/tcm.bin: $(ELF_FILE) | $(BUILD_DIR)
 	$(OBJCOPY) $< -O binary $@
+	riscv32-unknown-elf-objdump -d $(ELF_FILE) > $(BUILD_DIR)/test.s
 
 $(BUILD_DIR)/$(EXE): $(SRC_V) | $(BUILD_DIR)
 	@echo "# Compiling verilog"
