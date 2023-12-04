@@ -2,3 +2,4 @@
 *.vcd
 build
 openlane_run
+runs

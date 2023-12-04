@@ -1,5 +1,5 @@
 {
-    "DESIGN_NAME": "riscv_top",
+    "DESIGN_NAME": "riscv_core",
     "VERILOG_FILES": ["error-resilient-processor/biriscv/src/core/biriscv_alu.v",
     "error-resilient-processor/biriscv/src/core/biriscv_csr_regfile.v",
     "error-resilient-processor/biriscv/src/core/biriscv_csr.v",
@@ -40,5 +40,6 @@
     "error-resilient-processor/biriscv/src/top/riscv_tcm_top.v",
     "error-resilient-processor/biriscv/src/top/riscv_top.v"],
     "CLOCK_PORT": "clk_i",
-    "CLOCK_PERIOD": 100
+    "CLOCK_PERIOD": 100,
+    "SYNTH_NO_FLAT": "True"
 }
