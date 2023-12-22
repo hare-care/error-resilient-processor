@@ -1,2 +1,0 @@
-# Caravel user project includes	     
--v  verilog/rtl/sky130_sram_1kbyte_1rw1r_32x256_8.v  verilog/rtl/ExternalMemorySim.v    verilog/rtl/sky130_sram_8kbyte_1rw_64x1024_8.v   verilog/rtl/sky130_sram_8kbyte_1rw1r_32x2048_8.v   verilog/gl/RF.v verilog/gl/user_project_wrapper.v
