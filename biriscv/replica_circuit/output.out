@@ -1,0 +1,275 @@
+#! /home/ece393/tools/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-331-g77d7f0b8f)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ece393/tools/lib/ivl/system.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ece393/tools/lib/ivl/va_math.vpi";
+S_0x2355d40 .scope module, "replica_ALU_tb" "replica_ALU_tb" 2 3;
+ .timescale -9 -12;
+v0x23761c0_0 .var "a", 0 0;
+v0x23762b0_0 .net "y", 0 0, L_0x2379d70;  1 drivers
+S_0x234db00 .scope module, "uut" "replica_ALU" 2 12, 3 5 0, S_0x2355d40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /OUTPUT 1 "Y";
+v0x2375fa0_0 .net "A", 0 0, v0x23761c0_0;  1 drivers
+v0x2376040_0 .net "Y", 0 0, L_0x2379d70;  alias, 1 drivers
+v0x23760e0_0 .net "interconnections", 26 0, L_0x2379370;  1 drivers
+L_0x23764c0 .part L_0x2379370, 0, 1;
+L_0x2376650 .part L_0x2379370, 1, 1;
+L_0x2376800 .part L_0x2379370, 2, 1;
+L_0x2376990 .part L_0x2379370, 3, 1;
+L_0x2376b50 .part L_0x2379370, 4, 1;
+L_0x2376c90 .part L_0x2379370, 5, 1;
+L_0x2376e30 .part L_0x2379370, 6, 1;
+L_0x2376fc0 .part L_0x2379370, 7, 1;
+L_0x23771a0 .part L_0x2379370, 8, 1;
+L_0x2377330 .part L_0x2379370, 9, 1;
+L_0x2377520 .part L_0x2379370, 10, 1;
+L_0x2377660 .part L_0x2379370, 11, 1;
+L_0x2377860 .part L_0x2379370, 12, 1;
+L_0x23779f0 .part L_0x2379370, 13, 1;
+L_0x2377b90 .part L_0x2379370, 14, 1;
+L_0x2377d20 .part L_0x2379370, 15, 1;
+L_0x2378150 .part L_0x2379370, 16, 1;
+L_0x23782e0 .part L_0x2379370, 17, 1;
+L_0x2378510 .part L_0x2379370, 18, 1;
+L_0x23786a0 .part L_0x2379370, 19, 1;
+L_0x23783d0 .part L_0x2379370, 20, 1;
+L_0x23789d0 .part L_0x2379370, 21, 1;
+L_0x2378c20 .part L_0x2379370, 22, 1;
+L_0x2378db0 .part L_0x2379370, 23, 1;
+L_0x2379010 .part L_0x2379370, 24, 1;
+L_0x23791a0 .part L_0x2379370, 25, 1;
+LS_0x2379370_0_0 .concat8 [ 1 1 1 1], L_0x23763c0, L_0x2376430, L_0x23765b0, L_0x2376790;
+LS_0x2379370_0_4 .concat8 [ 1 1 1 1], L_0x23768f0, L_0x2376ab0, L_0x2376bf0, L_0x2376dc0;
+LS_0x2379370_0_8 .concat8 [ 1 1 1 1], L_0x2376f20, L_0x2377100, L_0x2377290, L_0x2377480;
+LS_0x2379370_0_12 .concat8 [ 1 1 1 1], L_0x23775c0, L_0x23777c0, L_0x2377950, L_0x2377750;
+LS_0x2379370_0_16 .concat8 [ 1 1 1 1], L_0x2377c80, L_0x23780b0, L_0x2378240, L_0x2378470;
+LS_0x2379370_0_20 .concat8 [ 1 1 1 1], L_0x2378600, L_0x2378840, L_0x2378930, L_0x2378b80;
+LS_0x2379370_0_24 .concat8 [ 1 1 1 0], L_0x2378d10, L_0x2378f70, L_0x2379100;
+LS_0x2379370_1_0 .concat8 [ 4 4 4 4], LS_0x2379370_0_0, LS_0x2379370_0_4, LS_0x2379370_0_8, LS_0x2379370_0_12;
+LS_0x2379370_1_4 .concat8 [ 4 4 3 0], LS_0x2379370_0_16, LS_0x2379370_0_20, LS_0x2379370_0_24;
+L_0x2379370 .concat8 [ 16 11 0 0], LS_0x2379370_1_0, LS_0x2379370_1_4;
+L_0x2379de0 .part L_0x2379370, 26, 1;
+S_0x2354260 .scope module, "inv0" "inverter" 3 9, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x23763c0 .functor NOT 1, v0x23761c0_0, C4<0>, C4<0>, C4<0>;
+v0x234e520_0 .net "a", 0 0, v0x23761c0_0;  alias, 1 drivers
+v0x2340610_0 .net "y", 0 0, L_0x23763c0;  1 drivers
+S_0x236f360 .scope module, "inv1" "inverter" 3 10, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2376430 .functor NOT 1, L_0x23764c0, C4<0>, C4<0>, C4<0>;
+v0x233fd40_0 .net "a", 0 0, L_0x23764c0;  1 drivers
+v0x233f470_0 .net "y", 0 0, L_0x2376430;  1 drivers
+S_0x236f5b0 .scope module, "inv10" "inverter" 3 19, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2377290 .functor NOT 1, L_0x2377330, C4<0>, C4<0>, C4<0>;
+v0x233eba0_0 .net "a", 0 0, L_0x2377330;  1 drivers
+v0x233e2d0_0 .net "y", 0 0, L_0x2377290;  1 drivers
+S_0x236f7e0 .scope module, "inv11" "inverter" 3 20, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2377480 .functor NOT 1, L_0x2377520, C4<0>, C4<0>, C4<0>;
+v0x233d8a0_0 .net "a", 0 0, L_0x2377520;  1 drivers
+v0x236fa00_0 .net "y", 0 0, L_0x2377480;  1 drivers
+S_0x236fb20 .scope module, "inv12" "inverter" 3 21, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x23775c0 .functor NOT 1, L_0x2377660, C4<0>, C4<0>, C4<0>;
+v0x236fda0_0 .net "a", 0 0, L_0x2377660;  1 drivers
+v0x236fe80_0 .net "y", 0 0, L_0x23775c0;  1 drivers
+S_0x236ffa0 .scope module, "inv13" "inverter" 3 22, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x23777c0 .functor NOT 1, L_0x2377860, C4<0>, C4<0>, C4<0>;
+v0x23701d0_0 .net "a", 0 0, L_0x2377860;  1 drivers
+v0x23702b0_0 .net "y", 0 0, L_0x23777c0;  1 drivers
+S_0x23703d0 .scope module, "inv14" "inverter" 3 23, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2377950 .functor NOT 1, L_0x23779f0, C4<0>, C4<0>, C4<0>;
+v0x2370600_0 .net "a", 0 0, L_0x23779f0;  1 drivers
+v0x23706e0_0 .net "y", 0 0, L_0x2377950;  1 drivers
+S_0x2370800 .scope module, "inv15" "inverter" 3 24, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2377750 .functor NOT 1, L_0x2377b90, C4<0>, C4<0>, C4<0>;
+v0x2370a30_0 .net "a", 0 0, L_0x2377b90;  1 drivers
+v0x2370b10_0 .net "y", 0 0, L_0x2377750;  1 drivers
+S_0x2370c30 .scope module, "inv16" "inverter" 3 25, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2377c80 .functor NOT 1, L_0x2377d20, C4<0>, C4<0>, C4<0>;
+v0x2370e10_0 .net "a", 0 0, L_0x2377d20;  1 drivers
+v0x2370ef0_0 .net "y", 0 0, L_0x2377c80;  1 drivers
+S_0x2371010 .scope module, "inv17" "inverter" 3 26, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x23780b0 .functor NOT 1, L_0x2378150, C4<0>, C4<0>, C4<0>;
+v0x2371240_0 .net "a", 0 0, L_0x2378150;  1 drivers
+v0x2371320_0 .net "y", 0 0, L_0x23780b0;  1 drivers
+S_0x2371440 .scope module, "inv18" "inverter" 3 27, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378240 .functor NOT 1, L_0x23782e0, C4<0>, C4<0>, C4<0>;
+v0x2371670_0 .net "a", 0 0, L_0x23782e0;  1 drivers
+v0x2371750_0 .net "y", 0 0, L_0x2378240;  1 drivers
+S_0x2371870 .scope module, "inv19" "inverter" 3 28, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378470 .functor NOT 1, L_0x2378510, C4<0>, C4<0>, C4<0>;
+v0x2371aa0_0 .net "a", 0 0, L_0x2378510;  1 drivers
+v0x2371b80_0 .net "y", 0 0, L_0x2378470;  1 drivers
+S_0x2371ca0 .scope module, "inv2" "inverter" 3 11, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x23765b0 .functor NOT 1, L_0x2376650, C4<0>, C4<0>, C4<0>;
+v0x2371ed0_0 .net "a", 0 0, L_0x2376650;  1 drivers
+v0x2371fb0_0 .net "y", 0 0, L_0x23765b0;  1 drivers
+S_0x23720d0 .scope module, "inv20" "inverter" 3 29, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378600 .functor NOT 1, L_0x23786a0, C4<0>, C4<0>, C4<0>;
+v0x2372300_0 .net "a", 0 0, L_0x23786a0;  1 drivers
+v0x23723e0_0 .net "y", 0 0, L_0x2378600;  1 drivers
+S_0x2372500 .scope module, "inv21" "inverter" 3 30, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378840 .functor NOT 1, L_0x23783d0, C4<0>, C4<0>, C4<0>;
+v0x2372730_0 .net "a", 0 0, L_0x23783d0;  1 drivers
+v0x2372810_0 .net "y", 0 0, L_0x2378840;  1 drivers
+S_0x2372930 .scope module, "inv22" "inverter" 3 31, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378930 .functor NOT 1, L_0x23789d0, C4<0>, C4<0>, C4<0>;
+v0x2372b60_0 .net "a", 0 0, L_0x23789d0;  1 drivers
+v0x2372c40_0 .net "y", 0 0, L_0x2378930;  1 drivers
+S_0x2372d60 .scope module, "inv23" "inverter" 3 32, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378b80 .functor NOT 1, L_0x2378c20, C4<0>, C4<0>, C4<0>;
+v0x2372f90_0 .net "a", 0 0, L_0x2378c20;  1 drivers
+v0x2373070_0 .net "y", 0 0, L_0x2378b80;  1 drivers
+S_0x2373190 .scope module, "inv24" "inverter" 3 33, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378d10 .functor NOT 1, L_0x2378db0, C4<0>, C4<0>, C4<0>;
+v0x23733c0_0 .net "a", 0 0, L_0x2378db0;  1 drivers
+v0x23734a0_0 .net "y", 0 0, L_0x2378d10;  1 drivers
+S_0x23735c0 .scope module, "inv25" "inverter" 3 34, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2378f70 .functor NOT 1, L_0x2379010, C4<0>, C4<0>, C4<0>;
+v0x23737f0_0 .net "a", 0 0, L_0x2379010;  1 drivers
+v0x23738d0_0 .net "y", 0 0, L_0x2378f70;  1 drivers
+S_0x23739f0 .scope module, "inv26" "inverter" 3 35, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2379100 .functor NOT 1, L_0x23791a0, C4<0>, C4<0>, C4<0>;
+v0x2373c20_0 .net "a", 0 0, L_0x23791a0;  1 drivers
+v0x2373d00_0 .net "y", 0 0, L_0x2379100;  1 drivers
+S_0x2373e20 .scope module, "inv27" "inverter" 3 36, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2379d70 .functor NOT 1, L_0x2379de0, C4<0>, C4<0>, C4<0>;
+v0x2374050_0 .net "a", 0 0, L_0x2379de0;  1 drivers
+v0x2374130_0 .net "y", 0 0, L_0x2379d70;  alias, 1 drivers
+S_0x2374250 .scope module, "inv3" "inverter" 3 12, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2376790 .functor NOT 1, L_0x2376800, C4<0>, C4<0>, C4<0>;
+v0x2374480_0 .net "a", 0 0, L_0x2376800;  1 drivers
+v0x2374560_0 .net "y", 0 0, L_0x2376790;  1 drivers
+S_0x2374680 .scope module, "inv4" "inverter" 3 13, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x23768f0 .functor NOT 1, L_0x2376990, C4<0>, C4<0>, C4<0>;
+v0x23748b0_0 .net "a", 0 0, L_0x2376990;  1 drivers
+v0x2374990_0 .net "y", 0 0, L_0x23768f0;  1 drivers
+S_0x2374ab0 .scope module, "inv5" "inverter" 3 14, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2376ab0 .functor NOT 1, L_0x2376b50, C4<0>, C4<0>, C4<0>;
+v0x2374ce0_0 .net "a", 0 0, L_0x2376b50;  1 drivers
+v0x2374dc0_0 .net "y", 0 0, L_0x2376ab0;  1 drivers
+S_0x2374ee0 .scope module, "inv6" "inverter" 3 15, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2376bf0 .functor NOT 1, L_0x2376c90, C4<0>, C4<0>, C4<0>;
+v0x2375110_0 .net "a", 0 0, L_0x2376c90;  1 drivers
+v0x23751f0_0 .net "y", 0 0, L_0x2376bf0;  1 drivers
+S_0x2375310 .scope module, "inv7" "inverter" 3 16, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2376dc0 .functor NOT 1, L_0x2376e30, C4<0>, C4<0>, C4<0>;
+v0x2375540_0 .net "a", 0 0, L_0x2376e30;  1 drivers
+v0x2375620_0 .net "y", 0 0, L_0x2376dc0;  1 drivers
+S_0x2375740 .scope module, "inv8" "inverter" 3 17, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2376f20 .functor NOT 1, L_0x2376fc0, C4<0>, C4<0>, C4<0>;
+v0x2375970_0 .net "a", 0 0, L_0x2376fc0;  1 drivers
+v0x2375a50_0 .net "y", 0 0, L_0x2376f20;  1 drivers
+S_0x2375b70 .scope module, "inv9" "inverter" 3 18, 3 2 0, S_0x234db00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x2377100 .functor NOT 1, L_0x23771a0, C4<0>, C4<0>, C4<0>;
+v0x2375da0_0 .net "a", 0 0, L_0x23771a0;  1 drivers
+v0x2375e80_0 .net "y", 0 0, L_0x2377100;  1 drivers
+    .scope S_0x2355d40;
+T_0 ;
+    %vpi_call 2 20 "$dumpfile", "waveform.vcd" {0 0 0};
+    %vpi_call 2 21 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x2355d40 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x23761c0_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x23761c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x23761c0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 36 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "replica_ALU_tb.v";
+    "replica_ALU_multi.v";
