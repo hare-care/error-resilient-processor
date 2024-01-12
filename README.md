@@ -25,4 +25,6 @@ Put openlane_run.sh at home folder to run the whole project
 
 https://github.com/The-OpenROAD-Project/OpenLane/blob/master/docs/source/usage/chip_integration.md
 
+https://github.com/The-OpenROAD-Project/OpenLane/blob/master/docs/source/usage/hardening_macros.md
+
 
