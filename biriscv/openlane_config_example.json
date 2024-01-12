@@ -1,11 +1,11 @@
 {
-    "DESIGN_NAME": "tcm_mem",
-    "DESIGN_IS_CORE": 0,
+    "DESIGN_NAME": "riscv_new_top",
+    "DESIGN_IS_CORE":true,
     "VERILOG_FILES_BLACKBOX":["error-resilient-processor/biriscv/src/top/tcm_mem_ram.v"],
     "EXTRA_LEFS":["error-resilient-processor/biriscv/src/tcm/tcm_mem_ram.lef"],
     "EXTRA_LIBS":[
-"error-resilient-processor/biriscv/src/tcm/tcm_mem_ram_TT_1p8V_25C.lib",
-"error-resilient-processor/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+    "error-resilient-processor/biriscv/src/tcm/tcm_mem_ram_TT_1p8V_25C.lib",
+    "error-resilient-processor/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
 ],
     "EXTRA_GDS_FILES":["error-resilient-processor/biriscv/src/tcm/tcm_mem_ram.gds"],
     "VERILOG_FILES": [
@@ -31,24 +31,28 @@
     "error-resilient-processor/biriscv/src/core/riscv_core.v",
     "error-resilient-processor/biriscv/src/top/tcm_mem.v",
     "error-resilient-processor/biriscv/src/top/riscv_new_top.v"],
+    "FP_PDN_MULTILAYER": true,
+    "FP_PDN_CORE_RING": true,
+    "RT_MAX_LAYER": "met5",
+    "FP_PDN_VERTICAL_LAYER":"met4",
+    "FP_PDN_HORIZONTAL_LAYER":"met5",
     "VDD_NETS":"vccd1",
     "GND_NETS":"vssd1",
-    "SYNTH_USE_PG_PINS_DEFINES":"inout vccd1,inout vssd1",
+    "SYNTH_USE_PG_PINS_DEFINES":"USE_POWER_PINS",
     "FP_PDN_MACRO_HOOKS":"u_ram vccd1 vssd1 vccd1 vssd1",
     "FP_PDN_CFG": "/home/sfs6562/.local/lib/python3.9/site-packages/openlane/scripts/openroad/common/pdn_cfg.tcl",
     "MACRO_PLACEMENT_CFG":"/home/sfs6562/error-resilient-processor/biriscv/macro.cfg",
-    "FP_PDN_CHECK_NODES":0,
+    "FP_PDN_CHECK_NODES":1,
     "FP_PDN_HORIZONTAL_HALO": 10,
     "FP_PDN_VERTICAL_HALO": 10,
-    "CLOCK_PORT": "clk_i",
+    "CLOCK_PORT": "clk",
     "SYNTH_CLOCK_UNCERTAINTY":0.1,
     "SYNTH_CLOCK_TRANSITION":0.1,
     "CLOCK_PERIOD": 10,
     "SYNTH_NO_FLAT": "True",
     "PL_SKIP_INITIAL_PLACEMENT": "false",
-    "DIE_AREA":"0 0 1000 1000",
-    "FP_SIZING":"absolute",
-    "FP_CORE_UTIL": 50,
-    "PL_TARGET_DENSITY":0.55,
+
+    "FP_CORE_UTIL": 20,
+    "PL_TARGET_DENSITY":0.24,
     "ROUTING_CORES": 4
 }

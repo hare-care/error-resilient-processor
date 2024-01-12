@@ -1,6 +1,10 @@
 
 module tcm_mem
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
     // Inputs
      input           clk_i
     ,input           rst_i
@@ -42,6 +46,11 @@ wire [63:0]read_data_r_w;
 tcm_mem_ram 
 u_ram 
 (
+
+    `ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .clk0(clk_i),             // Connect clk0 to clk0_signal in your design
     .csb0(1'b0),             // Connect csb0 to csb0_signal
     .web0(1'b1),             // Connect web0 to web0_signal

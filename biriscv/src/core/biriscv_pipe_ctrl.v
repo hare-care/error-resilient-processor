@@ -34,6 +34,10 @@ module biriscv_pipe_ctrl
 // Ports
 //-----------------------------------------------------------------
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
 

@@ -39,6 +39,10 @@ module biriscv_issue
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           fetch0_valid_i
@@ -375,6 +379,10 @@ biriscv_pipe_ctrl
 )
 u_pipe0_ctrl
 (
+    `ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)    
 
@@ -497,6 +505,10 @@ biriscv_pipe_ctrl
 )
 u_pipe1_ctrl
 (
+    `ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
 
@@ -749,6 +761,10 @@ biriscv_regfile
 )
 u_regfile
 (
+    `ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .clk_i(clk_i),
     .rst_i(rst_i),
 

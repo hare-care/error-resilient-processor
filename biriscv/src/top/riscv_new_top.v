@@ -1,4 +1,8 @@
 module riscv_new_top(
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
     input clk,
     input rst,
     output [63:0]instruction,
@@ -38,6 +42,10 @@ u_dut
 // Ports
 //-----------------------------------------------------------------
 (
+    `ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
     // Inputs
      .clk_i(clk)
     ,.rst_i(rst)
@@ -73,6 +81,10 @@ u_dut
 tcm_mem
 u_mem
 (
+    `ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
     // Inputs
      .clk_i(clk)
     ,.rst_i(rst)

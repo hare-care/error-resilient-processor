@@ -57,6 +57,10 @@ endmodule
 module biriscv_xilinx_2r1w
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input  [  4:0]  rd0_i

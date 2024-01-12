@@ -26,6 +26,10 @@
 
 module biriscv_decoder
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input                        valid_i
     ,input                        fetch_fault_i
     ,input                        enable_muldiv_i
