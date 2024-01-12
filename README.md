@@ -11,11 +11,15 @@ src/top/tcm_mem_ram.v
 
 and all the things in core folder
 
-## The openlane config is :
+The lef,gds,lib is in folder tcm
+
+(We add to power pins to all modules)
+
+## Run openlane :
 
 biriscv/openlane_config_example.json
 
-* Remember to change the FP_PDN_CFG and add the things of metal layers:
+Put openlane_run.sh at home folder to run the whole project
 
 ## The link we use last time:
 
