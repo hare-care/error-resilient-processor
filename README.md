@@ -21,8 +21,8 @@ biriscv/openlane_config_example.json
 
 Put openlane_run.sh at home folder to run the whole project
 
-## The link we use last time:
+## Reference link:
 
-https://github.com/The-OpenROAD-Project/OpenLane/issues/2019
+https://github.com/The-OpenROAD-Project/OpenLane/blob/master/docs/source/usage/chip_integration.md
 
-https://github.com/The-OpenROAD-Project/OpenLane/issues/1016
+
