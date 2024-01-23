@@ -36,6 +36,10 @@ module biriscv_decode
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           fetch_in_valid_i
@@ -126,6 +130,10 @@ begin
     biriscv_decoder
     u_dec0
     (
+        `ifdef USE_POWER_PINS
+	        .vccd1(vccd1),	// User area 1 1.8V power
+	        .vssd1(vssd1),	// User area 1 digital ground
+        `endif
          .valid_i(fetch_in_valid_w)
         ,.fetch_fault_i(fetch_in_fault_fetch_w | fetch_in_fault_page_w)
         ,.enable_muldiv_i(enable_muldiv_w)
@@ -144,6 +152,10 @@ begin
     biriscv_decoder
     u_dec1
     (
+        `ifdef USE_POWER_PINS
+	        .vccd1(vccd1),	// User area 1 1.8V power
+	        .vssd1(vssd1),	// User area 1 digital ground
+        `endif
          .valid_i(fetch_in_valid_w)
         ,.fetch_fault_i(fetch_in_fault_fetch_w | fetch_in_fault_page_w)
         ,.enable_muldiv_i(enable_muldiv_w)
@@ -163,6 +175,10 @@ begin
     #( .OPC_INFO_W(10) )
     u_fifo
     (
+        `ifdef USE_POWER_PINS
+	        .vccd1(vccd1),	// User area 1 1.8V power
+	        .vssd1(vssd1),	// User area 1 digital ground
+        `endif
          .clk_i(clk_i)
         ,.rst_i(rst_i)
 
@@ -208,6 +224,10 @@ begin
     #( .OPC_INFO_W(2) )
     u_fifo
     (
+        `ifdef USE_POWER_PINS
+	        .vccd1(vccd1),	// User area 1 1.8V power
+	        .vssd1(vssd1),	// User area 1 digital ground
+        `endif
          .clk_i(clk_i)
         ,.rst_i(rst_i)
 
@@ -239,6 +259,10 @@ begin
     biriscv_decoder
     u_dec0
     (
+        `ifdef USE_POWER_PINS
+	        .vccd1(vccd1),	// User area 1 1.8V power
+	        .vssd1(vssd1),	// User area 1 digital ground
+        `endif
          .valid_i(fetch_out0_valid_o)
         ,.fetch_fault_i(fetch_out0_fault_fetch_o | fetch_out0_fault_page_o)
         ,.enable_muldiv_i(enable_muldiv_w)
@@ -257,6 +281,10 @@ begin
     biriscv_decoder
     u_dec1
     (
+        `ifdef USE_POWER_PINS
+	        .vccd1(vccd1),	// User area 1 1.8V power
+	        .vssd1(vssd1),	// User area 1 digital ground
+        `endif
          .valid_i(fetch_out1_valid_o)
         ,.fetch_fault_i(fetch_out1_fault_fetch_o | fetch_out1_fault_page_o)
         ,.enable_muldiv_i(enable_muldiv_w)
@@ -290,6 +318,10 @@ module fetch_fifo
 // Ports
 //-----------------------------------------------------------------
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input                  clk_i
     ,input                  rst_i
 

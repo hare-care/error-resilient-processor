@@ -26,6 +26,10 @@
 
 module biriscv_trace_sim
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input                        valid_i
     ,input  [31:0]                pc_i
     ,input  [31:0]                opcode_i

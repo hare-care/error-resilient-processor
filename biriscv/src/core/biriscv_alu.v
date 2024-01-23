@@ -25,6 +25,10 @@
 module biriscv_alu
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input  [  3:0]  alu_op_i
     ,input  [ 31:0]  alu_a_i
     ,input  [ 31:0]  alu_b_i

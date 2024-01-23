@@ -3,14 +3,13 @@ module tb_top;
 reg clk;
 reg rst;
 
-reg [7:0] mem[131072:0];
+reg [7:0] mem[255:0];//131072
 integer i;
 integer f;
 
 initial
 begin
     $display("Starting bench");
-
     if (`TRACE)
     begin
         $dumpfile("waveform.vcd");
@@ -24,12 +23,12 @@ begin
     rst = 0;
 
     // Load TCM memory
-    for (i=0;i<131072;i=i+1)
+    for (i=0;i<256;i=i+1) // 131072
         mem[i] = 0;
 
-    f = $fopenr("./build/tcm.bin");
+    f = $fopenr("./build/sample.bin");
     i = $fread(mem, f);
-    for (i=0;i<131072;i=i+1)
+    for (i=0;i<256;i=i+1)  //131072
         u_mem.write(i, mem[i]);
 end
 

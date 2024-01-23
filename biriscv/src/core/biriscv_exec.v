@@ -26,6 +26,10 @@
 module biriscv_exec
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           opcode_valid_i
@@ -232,6 +236,10 @@ wire [31:0]  alu_p_w;
 biriscv_alu
 u_alu
 (
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .alu_op_i(alu_func_r),
     .alu_a_i(alu_input_a_r),
     .alu_b_i(alu_input_b_r),

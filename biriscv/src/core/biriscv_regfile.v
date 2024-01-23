@@ -35,6 +35,10 @@ module biriscv_regfile
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input  [  4:0]  rd0_i
@@ -57,133 +61,153 @@ module biriscv_regfile
 // Xilinx specific register file (dual issue)
 //-----------------------------------------------------------------
 generate
-if (SUPPORT_REGFILE_XILINX && SUPPORT_DUAL_ISSUE)
-begin: REGFILE_XILINX
-    wire [31:0] ra0_value_w[1:0];
-    wire [31:0] rb0_value_w[1:0];
-    wire [31:0] ra1_value_w[1:0];
-    wire [31:0] rb1_value_w[1:0];
+// if (SUPPORT_REGFILE_XILINX && SUPPORT_DUAL_ISSUE)
+// begin: REGFILE_XILINX
+//     wire [31:0] ra0_value_w[1:0];
+//     wire [31:0] rb0_value_w[1:0];
+//     wire [31:0] ra1_value_w[1:0];
+//     wire [31:0] rb1_value_w[1:0];
 
-    biriscv_xilinx_2r1w
-    u_a_0
-    (
-        // Inputs
-         .clk_i(clk_i)
-        ,.rst_i(rst_i)
-        ,.rd0_i(rd0_i)
-        ,.rd0_value_i(rd0_value_i)
-        ,.ra_i(ra0_i)
-        ,.rb_i(rb0_i)
+//     biriscv_xilinx_2r1w
+//     u_a_0
+//     (
+//         // Inputs
+//         `ifdef USE_POWER_PINS
+// 	        .vccd1(vccd1),	// User area 1 1.8V power
+// 	        .vssd1(vssd1),	// User area 1 digital ground
+//         `endif
+//          .clk_i(clk_i)
+//         ,.rst_i(rst_i)
+//         ,.rd0_i(rd0_i)
+//         ,.rd0_value_i(rd0_value_i)
+//         ,.ra_i(ra0_i)
+//         ,.rb_i(rb0_i)
 
-        // Outputs
-        ,.ra_value_o(ra0_value_w[0])
-        ,.rb_value_o(rb0_value_w[0])
-    );
+//         // Outputs
+//         ,.ra_value_o(ra0_value_w[0])
+//         ,.rb_value_o(rb0_value_w[0])
+//     );
 
-    biriscv_xilinx_2r1w
-    u_a_1
-    (
-        // Inputs
-         .clk_i(clk_i)
-        ,.rst_i(rst_i)
-        ,.rd0_i(rd1_i)
-        ,.rd0_value_i(rd1_value_i)
-        ,.ra_i(ra0_i)
-        ,.rb_i(rb0_i)
+//     biriscv_xilinx_2r1w
+//     u_a_1
+//     (
+//         // Inputs
+//         `ifdef USE_POWER_PINS
+// 	        .vccd1(vccd1),	// User area 1 1.8V power
+// 	        .vssd1(vssd1),	// User area 1 digital ground
+//         `endif
+//          .clk_i(clk_i)
+//         ,.rst_i(rst_i)
+//         ,.rd0_i(rd1_i)
+//         ,.rd0_value_i(rd1_value_i)
+//         ,.ra_i(ra0_i)
+//         ,.rb_i(rb0_i)
 
-        // Outputs
-        ,.ra_value_o(ra0_value_w[1])
-        ,.rb_value_o(rb0_value_w[1])
-    );
+//         // Outputs
+//         ,.ra_value_o(ra0_value_w[1])
+//         ,.rb_value_o(rb0_value_w[1])
+//     );
 
-    biriscv_xilinx_2r1w
-    u_b_0
-    (
-        // Inputs
-         .clk_i(clk_i)
-        ,.rst_i(rst_i)
-        ,.rd0_i(rd0_i)
-        ,.rd0_value_i(rd0_value_i)
-        ,.ra_i(ra1_i)
-        ,.rb_i(rb1_i)
+//     biriscv_xilinx_2r1w
+//     u_b_0
+//     (
+//         // Inputs
+//         `ifdef USE_POWER_PINS
+// 	        .vccd1(vccd1),	// User area 1 1.8V power
+// 	        .vssd1(vssd1),	// User area 1 digital ground
+//         `endif
+//          .clk_i(clk_i)
+//         ,.rst_i(rst_i)
+//         ,.rd0_i(rd0_i)
+//         ,.rd0_value_i(rd0_value_i)
+//         ,.ra_i(ra1_i)
+//         ,.rb_i(rb1_i)
 
-        // Outputs
-        ,.ra_value_o(ra1_value_w[0])
-        ,.rb_value_o(rb1_value_w[0])
-    );
+//         // Outputs
+//         ,.ra_value_o(ra1_value_w[0])
+//         ,.rb_value_o(rb1_value_w[0])
+//     );
 
-    biriscv_xilinx_2r1w
-    u_b_1
-    (
-        // Inputs
-         .clk_i(clk_i)
-        ,.rst_i(rst_i)
-        ,.rd0_i(rd1_i)
-        ,.rd0_value_i(rd1_value_i)
-        ,.ra_i(ra1_i)
-        ,.rb_i(rb1_i)
+//     biriscv_xilinx_2r1w
+//     u_b_1
+//     (
+//         // Inputs
+//         `ifdef USE_POWER_PINS
+// 	        .vccd1(vccd1),	// User area 1 1.8V power
+// 	        .vssd1(vssd1),	// User area 1 digital ground
+//         `endif
+//          .clk_i(clk_i)
+//         ,.rst_i(rst_i)
+//         ,.rd0_i(rd1_i)
+//         ,.rd0_value_i(rd1_value_i)
+//         ,.ra_i(ra1_i)
+//         ,.rb_i(rb1_i)
 
-        // Outputs
-        ,.ra_value_o(ra1_value_w[1])
-        ,.rb_value_o(rb1_value_w[1])
-    );
+//         // Outputs
+//         ,.ra_value_o(ra1_value_w[1])
+//         ,.rb_value_o(rb1_value_w[1])
+//     );
 
-    // Track latest register write 
-    reg [31:0] reg_src_q;
-    reg [31:0] reg_src_r;
+//     // Track latest register write 
+//     reg [31:0] reg_src_q;
+//     reg [31:0] reg_src_r;
 
-    always @ *
-    begin
-        reg_src_r = reg_src_q;
+//     always @ *
+//     begin
+//         reg_src_r = reg_src_q;
 
-        reg_src_r[rd0_i] = 1'b0;
-        reg_src_r[rd1_i] = 1'b1;
+//         reg_src_r[rd0_i] = 1'b0;
+//         reg_src_r[rd1_i] = 1'b1;
 
-        // Ignore register 0
-        reg_src_r[0] = 1'b0;
-    end 
+//         // Ignore register 0
+//         reg_src_r[0] = 1'b0;
+//     end 
 
-    always @ (posedge clk_i or posedge rst_i)
-    if (rst_i)
-        reg_src_q <= 32'b0;
-    else
-        reg_src_q <= reg_src_r;
+//     always @ (posedge clk_i or posedge rst_i)
+//     if (rst_i)
+//         reg_src_q <= 32'b0;
+//     else
+//         reg_src_q <= reg_src_r;
 
 
-    assign ra0_value_o = reg_src_q[ra0_i] ? ra0_value_w[1] : ra0_value_w[0];
-    assign rb0_value_o = reg_src_q[rb0_i] ? rb0_value_w[1] : rb0_value_w[0];
-    assign ra1_value_o = reg_src_q[ra1_i] ? ra1_value_w[1] : ra1_value_w[0];
-    assign rb1_value_o = reg_src_q[rb1_i] ? rb1_value_w[1] : rb1_value_w[0];
-end
+//     assign ra0_value_o = reg_src_q[ra0_i] ? ra0_value_w[1] : ra0_value_w[0];
+//     assign rb0_value_o = reg_src_q[rb0_i] ? rb0_value_w[1] : rb0_value_w[0];
+//     assign ra1_value_o = reg_src_q[ra1_i] ? ra1_value_w[1] : ra1_value_w[0];
+//     assign rb1_value_o = reg_src_q[rb1_i] ? rb1_value_w[1] : rb1_value_w[0];
+// end
 //-----------------------------------------------------------------
 // Xilinx specific register file (single issue)
 //-----------------------------------------------------------------
-else if (SUPPORT_REGFILE_XILINX && !SUPPORT_DUAL_ISSUE)
-begin: REGFILE_XILINX_SINGLE
+// else if (SUPPORT_REGFILE_XILINX && !SUPPORT_DUAL_ISSUE)
+// begin: REGFILE_XILINX_SINGLE
 
-    biriscv_xilinx_2r1w
-    u_reg
-    (
-        // Inputs
-         .clk_i(clk_i)
-        ,.rst_i(rst_i)
-        ,.rd0_i(rd0_i)
-        ,.rd0_value_i(rd0_value_i)
-        ,.ra_i(ra0_i)
-        ,.rb_i(rb0_i)
+//     biriscv_xilinx_2r1w
+//     u_reg
+//     (
+//         // Inputs
+//         `ifdef USE_POWER_PINS
+// 	        .vccd1(vccd1),	// User area 1 1.8V power
+// 	        .vssd1(vssd1),	// User area 1 digital ground
+//         `endif
+//          .clk_i(clk_i)
+//         ,.rst_i(rst_i)
+//         ,.rd0_i(rd0_i)
+//         ,.rd0_value_i(rd0_value_i)
+//         ,.ra_i(ra0_i)
+//         ,.rb_i(rb0_i)
 
-        // Outputs
-        ,.ra_value_o(ra0_value_o)
-        ,.rb_value_o(rb0_value_o)
-    );
+//         // Outputs
+//         ,.ra_value_o(ra0_value_o)
+//         ,.rb_value_o(rb0_value_o)
+//     );
 
-    assign ra1_value_o = 32'b0;
-    assign rb1_value_o = 32'b0;
-end
+//     assign ra1_value_o = 32'b0;
+//     assign rb1_value_o = 32'b0;
+// end
 //-----------------------------------------------------------------
 // Flop based register file
 //-----------------------------------------------------------------
-else
+// else
 begin: REGFILE
     reg [31:0] reg_r1_q;
     reg [31:0] reg_r2_q;

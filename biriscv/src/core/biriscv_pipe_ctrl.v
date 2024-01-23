@@ -34,6 +34,10 @@ module biriscv_pipe_ctrl
 // Ports
 //-----------------------------------------------------------------
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
 
@@ -444,6 +448,10 @@ assign csr_wdata_wb_o  = csr_wdata_wb_q;
 biriscv_trace_sim
 u_trace_d
 (
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .valid_i(issue_valid_i)
     ,.pc_i(issue_pc_i)
     ,.opcode_i(issue_opcode_i)
@@ -452,6 +460,10 @@ u_trace_d
 biriscv_trace_sim
 u_trace_wb
 (
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .valid_i(valid_wb_o)
     ,.pc_i(pc_wb_o)
     ,.opcode_i(opcode_wb_o)

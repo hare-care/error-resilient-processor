@@ -67,24 +67,34 @@ module dcache_core
 // Number of ways
 localparam DCACHE_NUM_WAYS           = 2;
 
-// Number of cache lines
-localparam DCACHE_NUM_LINES          = 256;
-localparam DCACHE_LINE_ADDR_W        = 8;
+// // Number of cache lines
+// localparam DCACHE_NUM_LINES          = 256;
+// localparam DCACHE_LINE_ADDR_W        = 8;
 
-// Line size (e.g. 32-bytes)
-localparam DCACHE_LINE_SIZE_W        = 5;
-localparam DCACHE_LINE_SIZE          = 32;
-localparam DCACHE_LINE_WORDS         = 8;
+// // Line size (e.g. 32-bytes)
+// localparam DCACHE_LINE_SIZE_W        = 5;
+// localparam DCACHE_LINE_SIZE          = 32;
+// localparam DCACHE_LINE_WORDS         = 8;
+// Number of cache lines
+localparam DCACHE_NUM_LINES          = 32;
+localparam DCACHE_LINE_ADDR_W        = 5;
+
+// Line size (e.g. 8-bytes)
+localparam DCACHE_LINE_SIZE_W        = 3;
+localparam DCACHE_LINE_SIZE          = 8;
+localparam DCACHE_LINE_WORDS         = 2;
 
 // Request -> tag address mapping
-localparam DCACHE_TAG_REQ_LINE_L     = 5;  // DCACHE_LINE_SIZE_W
-localparam DCACHE_TAG_REQ_LINE_H     = 12; // DCACHE_LINE_ADDR_W+DCACHE_LINE_SIZE_W-1
-localparam DCACHE_TAG_REQ_LINE_W     = 8;  // DCACHE_LINE_ADDR_W
+localparam DCACHE_TAG_REQ_LINE_L     = 3;  // DCACHE_LINE_SIZE_W
+localparam DCACHE_TAG_REQ_LINE_H     = 7; // DCACHE_LINE_ADDR_W+DCACHE_LINE_SIZE_W-1
+localparam DCACHE_TAG_REQ_LINE_W     = 5;  // DCACHE_LINE_ADDR_W
 `define DCACHE_TAG_REQ_RNG          DCACHE_TAG_REQ_LINE_H:DCACHE_TAG_REQ_LINE_L
 
 // Tag fields
-`define CACHE_TAG_ADDR_RNG          18:0
-localparam CACHE_TAG_ADDR_BITS       = 19;
+// `define CACHE_TAG_ADDR_RNG          18:0
+// localparam CACHE_TAG_ADDR_BITS       = 19;
+`define CACHE_TAG_ADDR_RNG          23:0
+localparam CACHE_TAG_ADDR_BITS       = 24;
 localparam CACHE_TAG_DIRTY_BIT       = CACHE_TAG_ADDR_BITS + 0;
 localparam CACHE_TAG_VALID_BIT       = CACHE_TAG_ADDR_BITS + 1;
 localparam CACHE_TAG_DATA_W          = CACHE_TAG_ADDR_BITS + 2;
@@ -93,7 +103,7 @@ localparam CACHE_TAG_DATA_W          = CACHE_TAG_ADDR_BITS + 2;
 localparam DCACHE_TAG_CMP_ADDR_L     = DCACHE_TAG_REQ_LINE_H + 1;
 localparam DCACHE_TAG_CMP_ADDR_H     = 32-1;
 localparam DCACHE_TAG_CMP_ADDR_W     = DCACHE_TAG_CMP_ADDR_H - DCACHE_TAG_CMP_ADDR_L + 1;
-`define   DCACHE_TAG_CMP_ADDR_RNG   31:13
+`define   DCACHE_TAG_CMP_ADDR_RNG   31:8
 
 // Address mapping example:
 //  31          16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
@@ -295,6 +305,10 @@ end
 
 // Tag RAM write enable (way 0)
 reg tag0_write_m_r;
+wire new_tag0_write_m_r=~tag0_write_m_r; //write when write signal is low(active low)
+// read enable
+wire new_tag0_read_m_r;
+assign new_tag0_read_m_r=tag0_write_m_r; //read when write signal is high(not write)
 always @ *
 begin
     tag0_write_m_r = 1'b0;
@@ -323,24 +337,39 @@ begin
 end
 
 wire [CACHE_TAG_DATA_W-1:0] tag0_data_out_m_w;
-
-dcache_core_tag_ram
+// new tag_ram using sky130
+dcache_tag_ram
 u_tag0
-(
-  .clk0_i(clk_i),
-  .rst0_i(rst_i),
-  .clk1_i(clk_i),
-  .rst1_i(rst_i),
+( 
+    //write
+  .clk0(clk_i), // clock
+  .csb0(new_tag0_write_m_r),// active low chip select
+  .addr0(tag_addr_m_r),
+  .din0(tag_data_in_m_r),
+  //read
+  .clk1(clk_i), // clock
+  .csb1(new_tag0_read_m_r),// active low chip select
+  .addr1(tag_addr_x_r),
+  .dout1(tag0_data_out_m_w)
 
-  // Read
-  .addr0_i(tag_addr_x_r),
-  .data0_o(tag0_data_out_m_w),
-
-  // Write
-  .addr1_i(tag_addr_m_r),
-  .data1_i(tag_data_in_m_r),
-  .wr1_i(tag0_write_m_r)
 );
+// dcache_core_tag_ram
+// u_tag0
+// (
+//   .clk0_i(clk_i),
+//   .rst0_i(rst_i),
+//   .clk1_i(clk_i),
+//   .rst1_i(rst_i),
+
+//   // Read
+//   .addr0_i(tag_addr_x_r),
+//   .data0_o(tag0_data_out_m_w),
+
+//   // Write
+//   .addr1_i(tag_addr_m_r),
+//   .data1_i(tag_data_in_m_r),
+//   .wr1_i(tag0_write_m_r)
+// );
 
 wire                           tag0_valid_m_w     = tag0_data_out_m_w[CACHE_TAG_VALID_BIT];
 wire                           tag0_dirty_m_w     = tag0_data_out_m_w[CACHE_TAG_DIRTY_BIT];
@@ -351,6 +380,12 @@ wire                           tag0_hit_m_w = tag0_valid_m_w ? (tag0_addr_bits_m
 
 // Tag RAM write enable (way 1)
 reg tag1_write_m_r;
+//write enable
+wire new_tag1_write_m_r;
+assign new_tag1_write_m_r=~tag1_write_m_r;
+//read enable
+wire new_tag1_read_m_r;
+assign new_tag1_read_m_r=tag1_write_m_r;
 always @ *
 begin
     tag1_write_m_r = 1'b0;
@@ -379,24 +414,38 @@ begin
 end
 
 wire [CACHE_TAG_DATA_W-1:0] tag1_data_out_m_w;
-
-dcache_core_tag_ram
+dcache_tag_ram
 u_tag1
-(
-  .clk0_i(clk_i),
-  .rst0_i(rst_i),
-  .clk1_i(clk_i),
-  .rst1_i(rst_i),
+( 
+    //write
+  .clk0(clk_i), // clock
+  .csb0(new_tag1_write_m_r),// active low chip select
+  .addr0(tag_addr_m_r),
+  .din0(tag_data_in_m_r),
+  //read
+  .clk1(clk_i), // clock
+  .csb1(new_tag1_read_m_r),// active low chip select
+  .addr1(tag_addr_x_r),
+  .dout1(tag1_data_out_m_w)
 
-  // Read
-  .addr0_i(tag_addr_x_r),
-  .data0_o(tag1_data_out_m_w),
+ );
+// dcache_core_tag_ram
+// u_tag1
+// (
+//   .clk0_i(clk_i),
+//   .rst0_i(rst_i),
+//   .clk1_i(clk_i),
+//   .rst1_i(rst_i),
 
-  // Write
-  .addr1_i(tag_addr_m_r),
-  .data1_i(tag_data_in_m_r),
-  .wr1_i(tag1_write_m_r)
-);
+//   // Read
+//   .addr0_i(tag_addr_x_r),
+//   .data0_o(tag1_data_out_m_w),
+
+//   // Write
+//   .addr1_i(tag_addr_m_r),
+//   .data1_i(tag_data_in_m_r),
+//   .wr1_i(tag1_write_m_r)
+// );
 
 wire                           tag1_valid_m_w     = tag1_data_out_m_w[CACHE_TAG_VALID_BIT];
 wire                           tag1_dirty_m_w     = tag1_data_out_m_w[CACHE_TAG_DIRTY_BIT];
@@ -406,20 +455,11 @@ wire [CACHE_TAG_ADDR_BITS-1:0] tag1_addr_bits_m_w = tag1_data_out_m_w[`CACHE_TAG
 wire                           tag1_hit_m_w = tag1_valid_m_w ? (tag1_addr_bits_m_w == req_addr_tag_cmp_m_w) : 1'b0;
 
 
-wire tag_hit_any_m_w = 1'b0
-                   | tag0_hit_m_w
-                   | tag1_hit_m_w
-                    ;
+wire tag_hit_any_m_w = 1'b0 | tag0_hit_m_w | tag1_hit_m_w;
 
-assign tag_hit_and_dirty_m_w = 1'b0
-                   | (tag0_hit_m_w & tag0_dirty_m_w)
-                   | (tag1_hit_m_w & tag1_dirty_m_w)
-                    ;
+assign tag_hit_and_dirty_m_w = 1'b0| (tag0_hit_m_w & tag0_dirty_m_w)| (tag1_hit_m_w & tag1_dirty_m_w);
 
-assign tag_dirty_any_m_w = 1'b0
-                   | (tag0_valid_m_w & tag0_dirty_m_w)
-                   | (tag1_valid_m_w & tag1_dirty_m_w)
-                    ;
+assign tag_dirty_any_m_w = 1'b0| (tag0_valid_m_w & tag0_dirty_m_w)| (tag1_valid_m_w & tag1_dirty_m_w);
 
 localparam EVICT_ADDR_W = 32 - DCACHE_LINE_SIZE_W;
 reg        evict_way_r;
@@ -525,26 +565,52 @@ end
 wire [31:0] data0_data_out_m_w;
 wire [31:0] data0_data_in_m_w = (state_q == STATE_REFILL) ? pmem_read_data_w : mem_data_m_q;
 
-dcache_core_data_ram
+
+// new data ram
+wire [3:0] new_data0_write_m_r;
+assign new_data0_write_m_r=~data0_write_m_r;
+
+dcache_data_ram
 u_data0
-(
-  .clk0_i(clk_i),
-  .rst0_i(rst_i),
-  .clk1_i(clk_i),
-  .rst1_i(rst_i),
-
-  // Read
-  .addr0_i(data_addr_x_r),
-  .data0_i(32'b0),
-  .wr0_i(4'b0),
-  .data0_o(data0_data_out_m_w),
-
-  // Write
-  .addr1_i(data_addr_m_r),
-  .data1_i(data0_data_in_m_w),
-  .wr1_i(data0_write_m_r),
-  .data1_o()
+(   
+    //read
+    .clk0(clk_i),
+    .csb0(1'b0),
+    .web0(1'b1),                // disable write
+    .addr0(data_addr_x_r),      // 11 bits 
+    .wmask0(4'b0),
+    .din0(32'b0),
+    .dout0(data0_data_out_m_w),
+    //write
+    .clk1(clk_i),
+    .csb1(1'b0),
+    .web1(1'b0),                // enable write
+    .addr1(data_addr_m_r),
+    .wmask1(new_data0_write_m_r),
+    .din1(data0_data_in_m_w),
+    .dout1()
 );
+// dcache_core_data_ram
+// u_data0
+// (
+//   .clk0_i(clk_i),
+//   .rst0_i(rst_i),
+//   .clk1_i(clk_i),
+//   .rst1_i(rst_i),
+
+//   // Read
+//   .addr0_i(data_addr_x_r),
+//   .data0_i(32'b0),
+//   .wr0_i(4'b0),
+//   .data0_o(data0_data_out_m_w),
+
+//   // Write
+//   .addr1_i(data_addr_m_r),
+//   .data1_i(data0_data_in_m_w),
+//   .wr1_i(data0_write_m_r),
+//   .data1_o()
+// );
+
 
 
 // Data RAM write enable (way 1)
@@ -562,26 +628,51 @@ end
 wire [31:0] data1_data_out_m_w;
 wire [31:0] data1_data_in_m_w = (state_q == STATE_REFILL) ? pmem_read_data_w : mem_data_m_q;
 
-dcache_core_data_ram
+
+// new data ram
+wire [3:0] new_data1_write_m_r;
+assign new_data1_write_m_r=~data1_write_m_r;
+
+dcache_data_ram
 u_data1
-(
-  .clk0_i(clk_i),
-  .rst0_i(rst_i),
-  .clk1_i(clk_i),
-  .rst1_i(rst_i),
-
-  // Read
-  .addr0_i(data_addr_x_r),
-  .data0_i(32'b0),
-  .wr0_i(4'b0),
-  .data0_o(data1_data_out_m_w),
-
-  // Write
-  .addr1_i(data_addr_m_r),
-  .data1_i(data1_data_in_m_w),
-  .wr1_i(data1_write_m_r),
-  .data1_o()
+(   
+    //read
+    .clk0(clk_i),
+    .csb0(1'b0),
+    .web0(1'b1),                // disable write
+    .addr0(data_addr_x_r),      // 11 bits 
+    .wmask0(4'b0),
+    .din0(32'b0),
+    .dout0(data1_data_out_m_w),
+    //write
+    .clk1(clk_i),
+    .csb1(1'b0),
+    .web1(1'b0),                // enable write
+    .addr1(data_addr_m_r),
+    .wmask1(new_data1_write_m_r),
+    .din1(data1_data_in_m_w),
+    .dout1()
 );
+// dcache_core_data_ram
+// u_data1
+// (
+//   .clk0_i(clk_i),
+//   .rst0_i(rst_i),
+//   .clk1_i(clk_i),
+//   .rst1_i(rst_i),
+
+//   // Read
+//   .addr0_i(data_addr_x_r),
+//   .data0_i(32'b0),
+//   .wr0_i(4'b0),
+//   .data0_o(data1_data_out_m_w),
+
+//   // Write
+//   .addr1_i(data_addr_m_r),
+//   .data1_i(data1_data_in_m_w),
+//   .wr1_i(data1_write_m_r),
+//   .data1_o()
+// );
 
 
 //-----------------------------------------------------------------

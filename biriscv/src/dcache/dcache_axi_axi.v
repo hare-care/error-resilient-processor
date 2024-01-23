@@ -31,7 +31,7 @@ module dcache_axi_axi
     ,input           inport_valid_i
     ,input           inport_write_i
     ,input  [ 31:0]  inport_addr_i
-    ,input  [  3:0]  inport_id_i
+    ,input  [  31:0]  inport_id_i
     ,input  [  7:0]  inport_len_i
     ,input  [  1:0]  inport_burst_i
     ,input  [ 31:0]  inport_wdata_i

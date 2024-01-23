@@ -87,26 +87,34 @@ module icache
 // Number of ways
 localparam ICACHE_NUM_WAYS           = 2;
 
+// // Number of cache lines
+// localparam ICACHE_NUM_LINES          = 256;
+// localparam ICACHE_LINE_ADDR_W        = 8;
+
+// // Line size (e.g. 32-bytes)
+// localparam ICACHE_LINE_SIZE_W        = 5;
+// localparam ICACHE_LINE_SIZE          = 32;
+// localparam ICACHE_LINE_WORDS         = 8;
+
 // Number of cache lines
-localparam ICACHE_NUM_LINES          = 256;
-localparam ICACHE_LINE_ADDR_W        = 8;
+localparam ICACHE_NUM_LINES          = 32;
+localparam ICACHE_LINE_ADDR_W        = 5;
 
-// Line size (e.g. 32-bytes)
-localparam ICACHE_LINE_SIZE_W        = 5;
-localparam ICACHE_LINE_SIZE          = 32;
-localparam ICACHE_LINE_WORDS         = 8;
-
+// Line size (e.g. 8-bytes)
+localparam ICACHE_LINE_SIZE_W        = 3;
+localparam ICACHE_LINE_SIZE          = 8;
+localparam ICACHE_LINE_WORDS         = 2;
 localparam ICACHE_DATA_W             = 64;
 
 // Request -> tag address mapping
-localparam ICACHE_TAG_REQ_LINE_L     = 5;  // ICACHE_LINE_SIZE_W
-localparam ICACHE_TAG_REQ_LINE_H     = 12; // ICACHE_LINE_ADDR_W+ICACHE_LINE_SIZE_W-1
-localparam ICACHE_TAG_REQ_LINE_W     = 8;  // ICACHE_LINE_ADDR_W
+localparam ICACHE_TAG_REQ_LINE_L     = 3;  // ICACHE_LINE_SIZE_W
+localparam ICACHE_TAG_REQ_LINE_H     = 7; // ICACHE_LINE_ADDR_W+ICACHE_LINE_SIZE_W-1
+localparam ICACHE_TAG_REQ_LINE_W     = 5;  // ICACHE_LINE_ADDR_W
 `define ICACHE_TAG_REQ_RNG          ICACHE_TAG_REQ_LINE_H:ICACHE_TAG_REQ_LINE_L
 
 // Tag fields
-`define CACHE_TAG_ADDR_RNG          18:0
-localparam CACHE_TAG_ADDR_BITS       = 19;
+`define CACHE_TAG_ADDR_RNG          23:0
+localparam CACHE_TAG_ADDR_BITS       = 24;
 localparam CACHE_TAG_VALID_BIT       = CACHE_TAG_ADDR_BITS;
 localparam CACHE_TAG_DATA_W          = CACHE_TAG_VALID_BIT + 1;
 
@@ -114,7 +122,7 @@ localparam CACHE_TAG_DATA_W          = CACHE_TAG_VALID_BIT + 1;
 localparam ICACHE_TAG_CMP_ADDR_L     = ICACHE_TAG_REQ_LINE_H + 1;
 localparam ICACHE_TAG_CMP_ADDR_H     = 32-1;
 localparam ICACHE_TAG_CMP_ADDR_W     = ICACHE_TAG_CMP_ADDR_H - ICACHE_TAG_CMP_ADDR_L + 1;
-`define   ICACHE_TAG_CMP_ADDR_RNG   31:13
+`define   ICACHE_TAG_CMP_ADDR_RNG   31:8
 
 // Address mapping example:
 //  31          16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
@@ -222,6 +230,7 @@ end
 
 // Tag RAM write enable (way 0)
 reg tag0_write_r;
+
 always @ *
 begin
     tag0_write_r = 1'b0;
@@ -236,16 +245,37 @@ end
 
 wire [CACHE_TAG_DATA_W-1:0] tag0_data_out_w;
 
+// new tag ram
+//write enable
+wire new_tag0_write_r;
+assign new_tag0_write_r=~tag0_write_r;
+//read enable
+wire new_tag0_read_r;
+assign new_tag0_read_r=tag0_write_r;
 icache_tag_ram
 u_tag0
 (
-  .clk_i(clk_i),
-  .rst_i(rst_i),
-  .addr_i(tag_addr_r),
-  .data_i(tag_data_in_r),
-  .wr_i(tag0_write_r),
-  .data_o(tag0_data_out_w)
+    //write
+  .clk0(clk_i), // clock
+  .csb0(new_tag0_write_r), // active low chip select, use as write enable here
+  .addr0(tag_addr_r), 
+  .din0(tag_data_in_r),
+  //read
+  .clk1(clk_i), // clock
+  .csb1(new_tag0_read_r), // active low chip select, when not write, enable read
+  .addr1(tag_addr_r),
+  .dout1(tag0_data_out_w)
 );
+// icache_tag_ram
+// u_tag0
+// (
+//   .clk_i(clk_i),
+//   .rst_i(rst_i),
+//   .addr_i(tag_addr_r),
+//   .data_i(tag_data_in_r),
+//   .wr_i(tag0_write_r),
+//   .data_o(tag0_data_out_w)
+// );
 
 wire                           tag0_valid_w     = tag0_data_out_w[CACHE_TAG_VALID_BIT];
 wire [CACHE_TAG_ADDR_BITS-1:0] tag0_addr_bits_w = tag0_data_out_w[`CACHE_TAG_ADDR_RNG];
@@ -255,6 +285,7 @@ wire                           tag0_hit_w = tag0_valid_w ? (tag0_addr_bits_w == 
 
 // Tag RAM write enable (way 1)
 reg tag1_write_r;
+
 always @ *
 begin
     tag1_write_r = 1'b0;
@@ -269,16 +300,37 @@ end
 
 wire [CACHE_TAG_DATA_W-1:0] tag1_data_out_w;
 
+// new tag ram
+//write
+wire new_tag1_write_r;
+assign new_tag1_write_r=~tag1_write_r;
+//read
+wire new_tag1_read_r;
+assign new_tag1_read_r=tag1_write_r;
 icache_tag_ram
 u_tag1
 (
-  .clk_i(clk_i),
-  .rst_i(rst_i),
-  .addr_i(tag_addr_r),
-  .data_i(tag_data_in_r),
-  .wr_i(tag1_write_r),
-  .data_o(tag1_data_out_w)
+    //write
+  .clk0(clk_i), // clock
+  .csb0(new_tag1_write_r), // active low chip select, use as write enable here
+  .addr0(tag_addr_r), 
+  .din0(tag_data_in_r),
+  //read
+  .clk1(clk_i), // clock
+  .csb1(new_tag1_read_r), // active low chip select, when not write, enable read
+  .addr1(tag_addr_r),
+  .dout1(tag1_data_out_w)
 );
+// icache_tag_ram
+// u_tag1
+// (
+//   .clk_i(clk_i),
+//   .rst_i(rst_i),
+//   .addr_i(tag_addr_r),
+//   .data_i(tag_data_in_r),
+//   .wr_i(tag1_write_r),
+//   .data_o(tag1_data_out_w)
+// );
 
 wire                           tag1_valid_w     = tag1_data_out_w[CACHE_TAG_VALID_BIT];
 wire [CACHE_TAG_ADDR_BITS-1:0] tag1_addr_bits_w = tag1_data_out_w[`CACHE_TAG_ADDR_RNG];
@@ -342,6 +394,7 @@ end
 
 // Data RAM write enable (way 0)
 reg data0_write_r;
+
 always @ *
 begin
     data0_write_r = axi_rvalid_i && replace_way_q == 0;
@@ -349,16 +402,39 @@ end
 
 wire [ICACHE_DATA_W-1:0] data0_data_out_w;
 
+
+// new write/read enable
+wire new_data0_write_r;
+wire new_data0_read_r;
+assign new_data0_write_r=~data0_write_r;
+assign new_data0_read_r= data0_write_r;
+// new data ram
 icache_data_ram
 u_data0
 (
-  .clk_i(clk_i),
-  .rst_i(rst_i),
-  .addr_i(data_addr_r),
-  .data_i({axi_rdata_i, refill_lower_q}),
-  .wr_i(data0_write_r),
-  .data_o(data0_data_out_w)
+// write
+  .clk0(clk_i), // clock
+  .csb0(new_data0_write_r), // active low chip select
+  .addr0(data_addr_r), // limit the numb of words to 32
+  .din0({axi_rdata_i, refill_lower_q}),
+// read
+  .clk1(clk_i), // clock
+  .csb1(new_data0_read_r), // active low chip select
+  .addr1(data_addr_r),
+  .dout1(data0_data_out_w)
 );
+
+
+// icache_data_ram
+// u_data0
+// (
+//   .clk_i(clk_i),
+//   .rst_i(rst_i),
+//   .addr_i(data_addr_r),
+//   .data_i({axi_rdata_i, refill_lower_q}),
+//   .wr_i(data0_write_r),
+//   .data_o(data0_data_out_w)
+// );
 
 // Data RAM write enable (way 1)
 reg data1_write_r;
@@ -369,16 +445,38 @@ end
 
 wire [ICACHE_DATA_W-1:0] data1_data_out_w;
 
+
+// new write/read enable
+wire new_data1_write_r;
+wire new_data1_read_r;
+assign new_data1_write_r=~data1_write_r;
+assign new_data1_read_r= data1_write_r;
+// new data ram
 icache_data_ram
 u_data1
 (
-  .clk_i(clk_i),
-  .rst_i(rst_i),
-  .addr_i(data_addr_r),
-  .data_i({axi_rdata_i, refill_lower_q}),
-  .wr_i(data1_write_r),
-  .data_o(data1_data_out_w)
+// write
+  .clk0(clk_i), // clock
+  .csb0(new_data1_write_r), // active low chip select
+  .addr0(data_addr_r), // limit the numb of words to 32
+  .din0({axi_rdata_i, refill_lower_q}),
+// read
+  .clk1(clk_i), // clock
+  .csb1(new_data1_read_r), // active low chip select
+  .addr1(data_addr_r),
+  .dout1(data1_data_out_w)
 );
+
+// icache_data_ram
+// u_data1
+// (
+//   .clk_i(clk_i),
+//   .rst_i(rst_i),
+//   .addr_i(data_addr_r),
+//   .data_i({axi_rdata_i, refill_lower_q}),
+//   .wr_i(data1_write_r),
+//   .data_o(data1_data_out_w)
+// );
 
 //-----------------------------------------------------------------
 // Flush counter

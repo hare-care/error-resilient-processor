@@ -36,6 +36,10 @@ module biriscv_lsu
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           opcode_valid_i
@@ -334,6 +338,10 @@ biriscv_lsu_fifo
 )
 u_lsu_request
 (
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
 
@@ -433,6 +441,10 @@ module biriscv_lsu_fifo
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input               clk_i
     ,input               rst_i
     ,input  [WIDTH-1:0]  data_in_i

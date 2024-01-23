@@ -28,13 +28,13 @@ module riscv_core
 // Params
 //-----------------------------------------------------------------
 #(
-     parameter SUPPORT_BRANCH_PREDICTION = 1
-    ,parameter SUPPORT_MULDIV   = 1
+     parameter SUPPORT_BRANCH_PREDICTION = 0 //1
+    ,parameter SUPPORT_MULDIV   = 0 //1
     ,parameter SUPPORT_SUPER    = 0
     ,parameter SUPPORT_MMU      = 0
-    ,parameter SUPPORT_DUAL_ISSUE = 1
-    ,parameter SUPPORT_LOAD_BYPASS = 1
-    ,parameter SUPPORT_MUL_BYPASS = 1
+    ,parameter SUPPORT_DUAL_ISSUE = 0 //1
+    ,parameter SUPPORT_LOAD_BYPASS = 0 //1
+    ,parameter SUPPORT_MUL_BYPASS = 0 //1
     ,parameter SUPPORT_REGFILE_XILINX = 0
     ,parameter EXTRA_DECODE_STAGE = 0
     ,parameter MEM_CACHE_ADDR_MIN = 32'h80000000
@@ -53,6 +53,10 @@ module riscv_core
 // Ports
 //-----------------------------------------------------------------
 (
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
     // Inputs
      input           clk_i
     ,input           rst_i
@@ -272,6 +276,10 @@ biriscv_frontend
 u_frontend
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.icache_accept_i(mmu_ifetch_accept_w)
@@ -338,6 +346,10 @@ biriscv_mmu
 u_mmu
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.priv_d_i(mmu_priv_d_w)
@@ -406,6 +418,10 @@ biriscv_lsu
 u_lsu
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.opcode_valid_i(lsu_opcode_valid_w)
@@ -450,6 +466,10 @@ biriscv_csr
 u_csr
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.intr_i(intr_i)
@@ -494,6 +514,10 @@ biriscv_multiplier
 u_mul
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.opcode_valid_i(mul_opcode_valid_w)
@@ -516,6 +540,10 @@ biriscv_divider
 u_div
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.opcode_valid_i(div_opcode_valid_w)
@@ -545,6 +573,10 @@ biriscv_issue
 u_issue
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+    	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.fetch0_valid_i(fetch0_valid_w)
@@ -690,6 +722,10 @@ biriscv_exec
 u_exec0
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.opcode_valid_i(exec0_opcode_valid_w)
@@ -723,6 +759,10 @@ biriscv_exec
 u_exec1
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+    	.vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.opcode_valid_i(exec1_opcode_valid_w)

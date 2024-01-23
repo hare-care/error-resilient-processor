@@ -44,6 +44,10 @@ module biriscv_npc
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           invalidate_i
@@ -351,6 +355,10 @@ biriscv_npc_lfsr
 )
 u_lru
 (
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
 
@@ -411,6 +419,10 @@ module biriscv_npc_lfsr
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           hit_i

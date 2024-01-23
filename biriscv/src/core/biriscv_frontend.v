@@ -47,6 +47,10 @@ module biriscv_frontend
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           icache_accept_i
@@ -132,6 +136,10 @@ biriscv_npc
 u_npc
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.invalidate_i(1'b0)
@@ -160,6 +168,10 @@ biriscv_decode
 u_decode
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.fetch_in_valid_i(fetch_valid_w)
@@ -212,6 +224,10 @@ biriscv_fetch
 u_fetch
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
     ,.fetch_accept_i(fetch_accept_w)

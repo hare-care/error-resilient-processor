@@ -25,9 +25,43 @@
 //-----------------------------------------------------------------
 // Module - Xilinx register file (2 async read, 1 write port)
 //-----------------------------------------------------------------
+//-------------------------------------------------------------
+// RAM16X1D: Verilator target RAM16X1D model
+//-------------------------------------------------------------
+//`ifdef verilator
+module RAM16X1D (
+    DPO, SPO, A0, A1, A2, A3, D, DPRA0, DPRA1, DPRA2, DPRA3, WCLK, WE);
+
+    parameter INIT = 16'h0000;
+
+    output DPO, SPO;
+
+    input  A0, A1, A2, A3, D, DPRA0, DPRA1, DPRA2, DPRA3, WCLK, WE;
+
+    reg  [15:0] mem;
+    wire [3:0] adr;
+
+    assign adr = {A3, A2, A1, A0};
+    assign SPO = mem[adr];
+    assign DPO = mem[{DPRA3, DPRA2, DPRA1, DPRA0}];
+
+    initial 
+        mem = INIT;
+
+    always @(posedge WCLK) 
+        if (WE == 1'b1)
+            mem[adr] <= D;
+
+endmodule
+//`endif
+
 module biriscv_xilinx_2r1w
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input  [  4:0]  rd0_i
@@ -63,8 +97,10 @@ genvar i;
 generate
 for (i=0;i<32;i=i+1)
 begin : reg_loop1
-    RAM16X1D reg_bit1a(.WCLK(clk_i), .WE(write_banka_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(ra_i[0]), .DPRA1(ra_i[1]), .DPRA2(ra_i[2]), .DPRA3(ra_i[3]), .DPO(rs1_0_15_w[i]), .SPO(/* open */));
-    RAM16X1D reg_bit2a(.WCLK(clk_i), .WE(write_banka_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(rb_i[0]), .DPRA1(rb_i[1]), .DPRA2(rb_i[2]), .DPRA3(rb_i[3]), .DPO(rs2_0_15_w[i]), .SPO(/* open */));
+    RAM16X1D reg_bit1a(
+        .WCLK(clk_i), .WE(write_banka_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(ra_i[0]), .DPRA1(ra_i[1]), .DPRA2(ra_i[2]), .DPRA3(ra_i[3]), .DPO(rs1_0_15_w[i]), .SPO(/* open */));
+    RAM16X1D reg_bit2a(
+        .WCLK(clk_i), .WE(write_banka_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(rb_i[0]), .DPRA1(rb_i[1]), .DPRA2(rb_i[2]), .DPRA3(rb_i[3]), .DPO(rs2_0_15_w[i]), .SPO(/* open */));
 end
 endgenerate
 
@@ -72,8 +108,10 @@ endgenerate
 generate
 for (i=0;i<32;i=i+1)
 begin : reg_loop2
-    RAM16X1D reg_bit1b(.WCLK(clk_i), .WE(write_bankb_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(ra_i[0]), .DPRA1(ra_i[1]), .DPRA2(ra_i[2]), .DPRA3(ra_i[3]), .DPO(rs1_16_31_w[i]), .SPO(/* open */));
-    RAM16X1D reg_bit2b(.WCLK(clk_i), .WE(write_bankb_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(rb_i[0]), .DPRA1(rb_i[1]), .DPRA2(rb_i[2]), .DPRA3(rb_i[3]), .DPO(rs2_16_31_w[i]), .SPO(/* open */));
+    RAM16X1D reg_bit1b(
+        .WCLK(clk_i), .WE(write_bankb_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(ra_i[0]), .DPRA1(ra_i[1]), .DPRA2(ra_i[2]), .DPRA3(ra_i[3]), .DPO(rs1_16_31_w[i]), .SPO(/* open */));
+    RAM16X1D reg_bit2b(
+        .WCLK(clk_i), .WE(write_bankb_w), .A0(rd0_i[0]), .A1(rd0_i[1]), .A2(rd0_i[2]), .A3(rd0_i[3]), .D(rd0_value_i[i]), .DPRA0(rb_i[0]), .DPRA1(rb_i[1]), .DPRA2(rb_i[2]), .DPRA3(rb_i[3]), .DPO(rs2_16_31_w[i]), .SPO(/* open */));
 end
 endgenerate
 
@@ -110,31 +148,3 @@ assign rb_value_o = rb_value_r;
 
 endmodule
 
-//-------------------------------------------------------------
-// RAM16X1D: Verilator target RAM16X1D model
-//-------------------------------------------------------------
-`ifdef verilator
-module RAM16X1D (DPO, SPO, A0, A1, A2, A3, D, DPRA0, DPRA1, DPRA2, DPRA3, WCLK, WE);
-
-    parameter INIT = 16'h0000;
-
-    output DPO, SPO;
-
-    input  A0, A1, A2, A3, D, DPRA0, DPRA1, DPRA2, DPRA3, WCLK, WE;
-
-    reg  [15:0] mem;
-    wire [3:0] adr;
-
-    assign adr = {A3, A2, A1, A0};
-    assign SPO = mem[adr];
-    assign DPO = mem[{DPRA3, DPRA2, DPRA1, DPRA0}];
-
-    initial 
-        mem = INIT;
-
-    always @(posedge WCLK) 
-        if (WE == 1'b1)
-            mem[adr] <= D;
-
-endmodule
-`endif

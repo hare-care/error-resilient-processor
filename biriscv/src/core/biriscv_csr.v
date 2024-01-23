@@ -36,6 +36,10 @@ module biriscv_csr
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input           intr_i
@@ -154,6 +158,10 @@ biriscv_csr_regfile
   ,.SUPPORT_SUPER(SUPPORT_SUPER) )
 u_csrfile
 (
+    `ifdef USE_POWER_PINS
+	    .vccd1(vccd1),	// User area 1 1.8V power
+	    .vssd1(vssd1),	// User area 1 digital ground
+    `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
 

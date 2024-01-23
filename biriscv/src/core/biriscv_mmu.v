@@ -37,6 +37,10 @@ module biriscv_mmu
 //-----------------------------------------------------------------
 (
     // Inputs
+    `ifdef USE_POWER_PINS
+        inout vccd1,
+        inout vssd1,
+    `endif
      input           clk_i
     ,input           rst_i
     ,input  [  1:0]  priv_d_i

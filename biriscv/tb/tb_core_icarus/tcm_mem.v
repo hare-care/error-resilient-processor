@@ -22,7 +22,7 @@ module tcm_mem
     ,output          mem_i_accept_o
     ,output          mem_i_valid_o
     ,output          mem_i_error_o
-    ,output [ 63:0]  mem_i_inst_o
+    ,output reg [ 63:0]  mem_i_inst_o
     ,output [ 31:0]  mem_d_data_rd_o
     ,output          mem_d_accept_o
     ,output          mem_d_ack_o
@@ -34,29 +34,63 @@ module tcm_mem
 // Dual Port RAM
 //-------------------------------------------------------------
 wire        muxed_hi_w   = mem_d_addr_i[2];
-wire [63:0] data_r_w;
+reg [63:0] data_r_w;
 
-tcm_mem_ram
-u_ram
+tcm_mem_ram 
+u_ram 
 (
-    // Instruction fetch
-     .clk0_i(clk_i)
-    ,.rst0_i(rst_i)
-    ,.addr0_i(mem_i_pc_i[16:3])
-    ,.data0_i(64'b0)
-    ,.wr0_i(8'b0)
+    .clk0(clk_i),             // Connect clk0 to clk0_signal in your design
+    .csb0(1'b0),             // Connect csb0 to csb0_signal
+    .web0(1'b1),             // Connect web0 to web0_signal
+    .addr0(mem_i_pc_i[7:3]),           // Connect addr0 to addr0_signal
+    .wmask0(8'b0),         // Connect wmask0 to wmask0_signal
+    .din0(64'b0),             // Connect din0 to din0_signal
+    .dout0(read_mem_i_inst_o),           // dout0 will be connected to dout0_signal
 
-    // External access / Data access
-    ,.clk1_i(clk_i)
-    ,.rst1_i(rst_i)
-    ,.addr1_i(mem_d_addr_i[16:3])
-    ,.data1_i(muxed_hi_w ? {mem_d_data_wr_i, 32'b0} : {32'b0, mem_d_data_wr_i})
-    ,.wr1_i(muxed_hi_w ? {mem_d_wr_i, 4'b0} : {4'b0, mem_d_wr_i})
-
-    // Outputs
-    ,.data0_o(mem_i_inst_o)
-    ,.data1_o(data_r_w)
+    .clk1(clk_i),             // Connect clk1 to clk1_signal
+    .csb1(1'b0),             // Connect csb1 to csb1_signal
+    .web1(web1),             // Connect web1 to web1_signal
+    .addr1(mem_d_addr_i[7:3]),           // Connect addr1 to addr1_signal
+    .wmask1(muxed_hi_w ? {mem_d_wr_i, 4'b0} : {4'b0, mem_d_wr_i}),         // Connect wmask1 to wmask1_signal
+    .din1(muxed_hi_w ? {mem_d_data_wr_i, 32'b0} : {32'b0, mem_d_data_wr_i}),             // Connect din1 to din1_signal
+    .dout1(read_data_r_w)            // dout1 will be connected to dout1_signal
 );
+wire web1;
+assign web1= ~| mem_d_wr_i;
+// synchrounous read from ram at pos clock edge
+wire [63:0]read_mem_i_inst_o;
+wire [63:0]read_data_r_w;
+always @(posedge clk_i ) begin
+    if (rst_i) begin
+        mem_i_inst_o<=64'b0;
+        data_r_w<= 64'b0;
+    end else begin
+        mem_i_inst_o<=read_mem_i_inst_o;
+        data_r_w<=read_data_r_w;
+    end
+end
+
+// tcm_mem_ram
+// u_ram
+// (
+//     // Instruction fetch
+//      .clk0_i(clk_i)
+//     ,.rst0_i(rst_i)
+//     ,.addr0_i(mem_i_pc_i[16:3])
+//     ,.data0_i(64'b0)
+//     ,.wr0_i(8'b0)
+
+//     // External access / Data access
+//     ,.clk1_i(clk_i)
+//     ,.rst1_i(rst_i)
+//     ,.addr1_i(mem_d_addr_i[16:3])
+//     ,.data1_i(muxed_hi_w ? {mem_d_data_wr_i, 32'b0} : {32'b0, mem_d_data_wr_i})
+//     ,.wr1_i(muxed_hi_w ? {mem_d_wr_i, 4'b0} : {4'b0, mem_d_wr_i})
+
+//     // Outputs
+//     ,.data0_o(mem_i_inst_o)
+//     ,.data1_o(data_r_w)
+// );
 
 reg muxed_hi_q;
 
@@ -112,22 +146,37 @@ assign mem_d_accept_o       = 1'b1;
 //-------------------------------------------------------------
 // write: Write byte into memory
 //-------------------------------------------------------------
+// task write; /*verilator public*/
+//     input [31:0] addr;
+//     input [7:0]  data;
+// begin
+//     case (addr[2:0]) // .ram
+//     3'd0: u_ram.ram[addr/8][7:0]   = data;
+//     3'd1: u_ram.ram[addr/8][15:8]  = data;
+//     3'd2: u_ram.ram[addr/8][23:16] = data;
+//     3'd3: u_ram.ram[addr/8][31:24] = data;
+//     3'd4: u_ram.ram[addr/8][39:32] = data;
+//     3'd5: u_ram.ram[addr/8][47:40] = data;
+//     3'd6: u_ram.ram[addr/8][55:48] = data;
+//     3'd7: u_ram.ram[addr/8][63:56] = data;
+//     endcase
+// end
+// endtask
+
 task write; /*verilator public*/
     input [31:0] addr;
     input [7:0]  data;
 begin
-    case (addr[2:0])
-    3'd0: u_ram.ram[addr/8][7:0]   = data;
-    3'd1: u_ram.ram[addr/8][15:8]  = data;
-    3'd2: u_ram.ram[addr/8][23:16] = data;
-    3'd3: u_ram.ram[addr/8][31:24] = data;
-    3'd4: u_ram.ram[addr/8][39:32] = data;
-    3'd5: u_ram.ram[addr/8][47:40] = data;
-    3'd6: u_ram.ram[addr/8][55:48] = data;
-    3'd7: u_ram.ram[addr/8][63:56] = data;
+    case (addr[2:0]) // .ram
+    3'd0: u_ram.mem[addr/8][7:0]   = data;
+    3'd1: u_ram.mem[addr/8][15:8]  = data;
+    3'd2: u_ram.mem[addr/8][23:16] = data;
+    3'd3: u_ram.mem[addr/8][31:24] = data;
+    3'd4: u_ram.mem[addr/8][39:32] = data;
+    3'd5: u_ram.mem[addr/8][47:40] = data;
+    3'd6: u_ram.mem[addr/8][55:48] = data;
+    3'd7: u_ram.mem[addr/8][63:56] = data;
     endcase
 end
 endtask
-
-
 endmodule
