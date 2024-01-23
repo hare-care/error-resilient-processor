@@ -1,0 +1,410 @@
+[2023-12-17 13:47:52.425338] [openram.globals/init_openram]: Initializing OpenRAM...
+[2023-12-17 13:47:52.426563] [openram.globals/setup_paths]: OpenRAM source code found in /home/sfs6562/OpenRAM/compiler
+[2023-12-17 13:47:52.427402] [openram.globals/setup_paths]: Temporary files saved in /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/
+[2023-12-17 13:47:52.428242] [openram.globals/read_config]: Configuration file is /home/sfs6562/OpenRAM/macro/sram_configs/icache_tag_ram.py
+[2023-12-17 13:47:52.431081] [openram.globals/read_config]: Output saved in /home/sfs6562/OpenRAM/macro/icache_tag_ram/
+[2023-12-17 13:47:52.431697] [openram.globals/install_conda]: Creating conda setup...
+[2023-12-17 13:47:52.434907] [openram.globals/import_tech]: Tech directory found in /home/sfs6562/OpenRAM/technology:/home/sfs6562/OpenRAM/miniconda/lib/python3.8/site-packages/openram/technology
+[2023-12-17 13:47:52.435804] [openram.globals/import_tech]: Adding technology path: /home/sfs6562/OpenRAM/technology
+[2023-12-17 13:47:52.436731] [openram.globals/import_tech]: Adding technology path: /home/sfs6562/OpenRAM/miniconda/lib/python3.8/site-packages/openram/technology
+[2023-12-17 13:47:52.446043] [openram.globals/purge_temp]: Purging temp directory: /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/
+[2023-12-17 13:47:52.663621] [openram.globals/setup_bitcell]: Using bitcell: bitcell_2port
+[2023-12-17 13:47:53.490261] [openram.characterizer/<module>]: Initializing characterizer...
+[2023-12-17 13:47:53.501856] [openram.characterizer/<module>]: Analytical model enabled.
+[2023-12-17 13:47:53.515013] [openram.verify/<module>]: Initializing verify...
+[2023-12-17 13:47:53.526820] [openram.verify/<module>]: Finding DRC/LVS/PEX tools.
+[2023-12-17 13:47:53.538615] [openram.globals/get_tool]: Using DRC: /home/sfs6562/OpenRAM/miniconda/bin/magic
+[2023-12-17 13:47:53.550598] [openram.globals/get_tool]: Using LVS: /home/sfs6562/OpenRAM/miniconda/bin/netgen
+[2023-12-17 13:47:53.562227] [openram.globals/get_tool]: Using PEX: /home/sfs6562/OpenRAM/miniconda/bin/magic
+[2023-12-17 13:47:53.564309] [openram.globals/setup_bitcell]: Using bitcell: bitcell_2port
+[2023-12-17 13:47:53.564816] |==============================================================================|
+[2023-12-17 13:47:53.565285] |=========                      OpenRAM v1.2.42                       =========|
+[2023-12-17 13:47:53.566002] |=========                                                            =========|
+[2023-12-17 13:47:53.566502] |=========               VLSI Design and Automation Lab               =========|
+[2023-12-17 13:47:53.567101] |=========        Computer Science and Engineering Department         =========|
+[2023-12-17 13:47:53.567655] |=========            University of California Santa Cruz             =========|
+[2023-12-17 13:47:53.568177] |=========                                                            =========|
+[2023-12-17 13:47:53.568706] |=========          Usage help: openram-user-group@ucsc.edu           =========|
+[2023-12-17 13:47:53.569185] |=========        Development help: openram-dev-group@ucsc.edu        =========|
+[2023-12-17 13:47:53.569629] |=========                See LICENSE for license info                =========|
+[2023-12-17 13:47:53.570129] |==============================================================================|
+[2023-12-17 13:47:53.570648] ** Start: 12/17/2023 13:47:53
+[2023-12-17 13:47:53.571155] Technology: sky130
+[2023-12-17 13:47:53.571601] Total size: 5120 bits
+[2023-12-17 13:47:53.572101] Word size: 20
+Words: 256
+Banks: 1
+[2023-12-17 13:47:53.572573] RW ports: 0
+R-only ports: 1
+W-only ports: 1
+[2023-12-17 13:47:53.573055] DRC/LVS/PEX is only run on the top-level design to save run-time (inline_lvsdrc=True to do inline checking).
+[2023-12-17 13:47:53.573528] Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+[2023-12-17 13:47:53.573999] Only generating nominal corner timing.
+[2023-12-17 13:47:53.574426] Words per row: None
+[2023-12-17 13:47:53.574897] Output files are: 
+[2023-12-17 13:47:53.575351] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.lvs
+[2023-12-17 13:47:53.575880] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.sp
+[2023-12-17 13:47:53.576414] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.v
+[2023-12-17 13:47:53.577088] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.lib
+[2023-12-17 13:47:53.577613] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.py
+[2023-12-17 13:47:53.578062] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.html
+[2023-12-17 13:47:53.578485] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.log
+[2023-12-17 13:47:53.578990] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.lef
+[2023-12-17 13:47:53.579417] /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.gds
+[2023-12-17 13:47:53.607562] [openram.sram_config/recompute_sizes]: Recomputing with words per row: 2
+[2023-12-17 13:47:53.608432] [openram.sram_config/recompute_sizes]: Rows: 128 Cols: 40
+[2023-12-17 13:47:53.609188] [openram.sram_config/recompute_sizes]: Row addr size: 7 Col addr size: 1 Bank addr size: 8
+[2023-12-17 13:47:53.609889] [openram.sram_config/compute_sizes]: Set SRAM Words Per Row=2
+[2023-12-17 13:47:53.630721] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_capped_replica_bitcell_array 128 x 40
+[2023-12-17 13:47:53.631784] [openram.modules.capped_replica_bitcell_array/__init__]: Creating icache_tag_ram_capped_replica_bitcell_array 128 x 40 rbls: [1, 1] left_rbl: [0] right_rbl: [1]
+[2023-12-17 13:47:53.634009] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_replica_bitcell_array 128 x 40
+[2023-12-17 13:47:53.635114] [openram.modules.replica_bitcell_array/__init__]: Creating icache_tag_ram_replica_bitcell_array 128 x 40 rbls: [1, 1] left_rbl: [0] right_rbl: [1]
+[2023-12-17 13:47:53.637332] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_bitcell_array 128 x 40
+[2023-12-17 13:47:53.638609] [openram.modules.bitcell_array/__init__]: Creating icache_tag_ram_bitcell_array 128 x 40
+[2023-12-17 13:48:11.190014] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_replica_column 130 x 1
+[2023-12-17 13:48:11.328935] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_replica_column_0 130 x 1
+[2023-12-17 13:48:11.424754] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_dummy_array 1 x 40
+[2023-12-17 13:48:12.504776] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_col_cap_array 1 x 42
+[2023-12-17 13:48:12.531720] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_col_cap_array_0 1 x 42
+[2023-12-17 13:48:12.554983] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_row_cap_array 130 x 1
+[2023-12-17 13:48:12.613746] [openram.modules.bitcell_base_array/__init__]: Creating icache_tag_ram_row_cap_array_0 130 x 1
+[2023-12-17 13:48:12.976918] [openram.modules.and2_dec/__init__]: Creating and2_dec and2_dec
+[2023-12-17 13:48:12.996823] [openram.modules.and3_dec/__init__]: Creating and3_dec and3_dec
+[2023-12-17 13:48:13.156616] [openram.modules.and4_dec/__init__]: Creating and4_dec and4_dec
+[2023-12-17 13:48:13.560204] [openram.modules.wordline_driver_array/__init__]: Creating icache_tag_ram_wordline_driver_array
+[2023-12-17 13:48:13.561957] [openram.modules.wordline_driver/__init__]: Creating wordline_driver wordline_driver
+[2023-12-17 13:48:13.795187] [openram.modules.and2_dec/__init__]: Creating and2_dec and2_dec_0
+[2023-12-17 13:48:13.937753] [openram.modules.precharge_array/__init__]: Creating icache_tag_ram_precharge_array
+[2023-12-17 13:48:13.977640] [openram.modules.column_mux_array/__init__]: Creating icache_tag_ram_column_mux_array
+[2023-12-17 13:48:14.203585] [openram.modules.write_driver_array/__init__]: Creating icache_tag_ram_write_driver_array
+[2023-12-17 13:48:14.288951] [openram.modules.precharge_array/__init__]: Creating icache_tag_ram_precharge_array_0
+[2023-12-17 13:48:14.327998] [openram.modules.sense_amp_array/__init__]: Creating icache_tag_ram_sense_amp_array
+[2023-12-17 13:48:14.368558] [openram.modules.column_mux_array/__init__]: Creating icache_tag_ram_column_mux_array_0
+[2023-12-17 13:48:14.502929] [openram.modules.pinvbuf/__init__]: creating pinvbuf pinvbuf
+[2023-12-17 13:48:14.731555] [openram.modules.dff_array/__init__]: Creating icache_tag_ram_row_addr_dff rows=7 cols=1
+[2023-12-17 13:48:14.741334] [openram.modules.dff_array/__init__]: Creating icache_tag_ram_col_addr_dff rows=1 cols=1
+[2023-12-17 13:48:14.744495] [openram.modules.dff_array/__init__]: Creating icache_tag_ram_data_dff rows=1 cols=20
+[2023-12-17 13:48:14.759269] [openram.modules.control_logic_base/__init__]: Creating control_logic_w
+[2023-12-17 13:48:14.761419] [openram.modules.dff_buf/__init__]: Creating icache_tag_ram_dff_buf
+[2023-12-17 13:48:14.765920] [openram.modules.dff_buf_array/__init__]: Creating icache_tag_ram_dff_buf_array
+[2023-12-17 13:48:14.767677] [openram.modules.dff_buf/__init__]: Creating icache_tag_ram_dff_buf_0
+[2023-12-17 13:48:14.773941] [openram.modules.pand2/__init__]: Creating pand2 pand2
+[2023-12-17 13:48:14.783173] [openram.modules.pdriver/__init__]: creating pdriver pdriver
+[2023-12-17 13:48:14.795025] [openram.modules.pbuf/__init__]: creating pbuf with size of 40
+[2023-12-17 13:48:14.819090] [openram.modules.pdriver/__init__]: creating pdriver pdriver_0
+[2023-12-17 13:48:14.862574] [openram.modules.pdriver/__init__]: creating pdriver pdriver_1
+[2023-12-17 13:48:14.889469] [openram.modules.pand3/__init__]: Creating pand3 pand3
+[2023-12-17 13:48:14.896125] [openram.modules.pdriver/__init__]: creating pdriver pdriver_2
+[2023-12-17 13:48:14.911444] [openram.modules.pand3/__init__]: Creating pand3 pand3_0
+[2023-12-17 13:48:14.913246] [openram.modules.pdriver/__init__]: creating pdriver pdriver_3
+[2023-12-17 13:48:14.926228] [openram.modules.pdriver/__init__]: creating pdriver pdriver_4
+[2023-12-17 13:48:14.942481] [openram.modules.delay_chain/__init__]: creating delay chain [4, 4, 4, 4, 4, 4, 4, 4, 4]
+[2023-12-17 13:48:14.999786] [openram.modules.control_logic_base/__init__]: Creating control_logic_r
+[2023-12-17 13:48:15.020066] ** Submodules: 21.4 seconds
+[2023-12-17 13:48:15.047734] ** Placement: 0.0 seconds
+[2023-12-17 13:49:48.296064] [openram.base.hierarchy_layout/get_bbox]: Size: 382.22 x 363.62 with perimeter margin 0
+[2023-12-17 13:49:48.383648] [openram.router.router_tech/__init__]: Minimum track width: 0.680
+[2023-12-17 13:49:48.384575] [openram.router.router_tech/__init__]: Minimum track space: 0.300
+[2023-12-17 13:49:48.385498] [openram.router.router_tech/__init__]: Minimum track wire width: 0.380
+[2023-12-17 13:49:48.386416] [openram.router.signal_escape_router/route]: Running signal escape router...
+[2023-12-17 13:53:44.132700] [openram.router.router_tech/__init__]: Minimum track width: 0.680
+[2023-12-17 13:53:44.134134] [openram.router.router_tech/__init__]: Minimum track space: 0.300
+[2023-12-17 13:53:44.135060] [openram.router.router_tech/__init__]: Minimum track wire width: 0.380
+[2023-12-17 13:53:44.136244] [openram.router.supply_router/route]: Running router for vdd and gnd...
+[2023-12-17 14:19:54.782870] ** Routing: 1899.7 seconds
+[2023-12-17 14:20:25.941878] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (30 seconds)
+[2023-12-17 14:20:55.972528] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (60 seconds)
+[2023-12-17 14:21:26.006029] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (90 seconds)
+[2023-12-17 14:21:56.038543] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (120 seconds)
+[2023-12-17 14:22:26.072086] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (150 seconds)
+[2023-12-17 14:22:56.105718] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (180 seconds)
+[2023-12-17 14:23:26.139542] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (210 seconds)
+[2023-12-17 14:23:56.172755] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (240 seconds)
+[2023-12-17 14:24:26.206024] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (270 seconds)
+[2023-12-17 14:24:56.238438] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (300 seconds)
+[2023-12-17 14:25:26.270347] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (330 seconds)
+[2023-12-17 14:25:56.303853] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (360 seconds)
+[2023-12-17 14:26:26.337246] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (390 seconds)
+[2023-12-17 14:26:56.370991] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (420 seconds)
+[2023-12-17 14:27:26.403356] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (451 seconds)
+[2023-12-17 14:27:56.434903] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (481 seconds)
+[2023-12-17 14:28:26.464561] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (511 seconds)
+[2023-12-17 14:28:56.497351] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (541 seconds)
+[2023-12-17 14:29:26.530979] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (571 seconds)
+[2023-12-17 14:29:56.564516] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (601 seconds)
+[2023-12-17 14:30:26.597109] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (631 seconds)
+[2023-12-17 14:30:56.630481] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (661 seconds)
+[2023-12-17 14:31:26.663241] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (691 seconds)
+[2023-12-17 14:31:56.697252] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (721 seconds)
+[2023-12-17 14:32:26.730578] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (751 seconds)
+[2023-12-17 14:32:56.763513] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (781 seconds)
+[2023-12-17 14:33:26.796659] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (811 seconds)
+[2023-12-17 14:33:56.829705] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (841 seconds)
+[2023-12-17 14:34:26.863350] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (871 seconds)
+[2023-12-17 14:34:56.896160] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (901 seconds)
+[2023-12-17 14:35:26.929992] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (931 seconds)
+[2023-12-17 14:35:56.964259] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (961 seconds)
+[2023-12-17 14:36:26.998620] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (991 seconds)
+[2023-12-17 14:36:57.031894] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1021 seconds)
+[2023-12-17 14:37:27.065519] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1051 seconds)
+[2023-12-17 14:37:57.098342] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1081 seconds)
+[2023-12-17 14:38:27.130594] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1111 seconds)
+[2023-12-17 14:38:57.164086] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1141 seconds)
+[2023-12-17 14:39:27.198102] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1171 seconds)
+[2023-12-17 14:39:57.232082] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1201 seconds)
+[2023-12-17 14:40:27.266345] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1231 seconds)
+[2023-12-17 14:40:57.299197] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1261 seconds)
+[2023-12-17 14:41:27.333190] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1291 seconds)
+[2023-12-17 14:41:57.366062] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1321 seconds)
+[2023-12-17 14:42:27.399437] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1352 seconds)
+[2023-12-17 14:42:57.431756] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1382 seconds)
+[2023-12-17 14:43:27.465620] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1412 seconds)
+[2023-12-17 14:43:57.498856] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1442 seconds)
+[2023-12-17 14:44:27.533192] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1472 seconds)
+[2023-12-17 14:44:57.567098] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1502 seconds)
+[2023-12-17 14:45:27.601004] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1532 seconds)
+[2023-12-17 14:45:57.633221] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1562 seconds)
+[2023-12-17 14:46:27.667136] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1592 seconds)
+[2023-12-17 14:46:57.700348] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1622 seconds)
+[2023-12-17 14:47:27.733372] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1652 seconds)
+[2023-12-17 14:47:57.766816] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1682 seconds)
+[2023-12-17 14:48:27.800653] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1712 seconds)
+[2023-12-17 14:48:57.834490] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1742 seconds)
+[2023-12-17 14:49:27.868359] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1772 seconds)
+[2023-12-17 14:49:57.900879] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1802 seconds)
+[2023-12-17 14:50:27.934252] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1832 seconds)
+[2023-12-17 14:50:57.967680] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1862 seconds)
+[2023-12-17 14:51:28.000492] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1892 seconds)
+[2023-12-17 14:51:58.033694] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1922 seconds)
+[2023-12-17 14:52:28.068510] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1952 seconds)
+[2023-12-17 14:52:58.102415] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (1982 seconds)
+[2023-12-17 14:53:28.136711] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2012 seconds)
+[2023-12-17 14:53:58.167226] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2042 seconds)
+[2023-12-17 14:54:28.199932] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2072 seconds)
+[2023-12-17 14:54:58.232462] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2102 seconds)
+[2023-12-17 14:55:28.267159] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2132 seconds)
+[2023-12-17 14:55:58.300164] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2162 seconds)
+[2023-12-17 14:56:28.334770] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2192 seconds)
+[2023-12-17 14:56:58.367566] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2222 seconds)
+[2023-12-17 14:57:28.401381] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2253 seconds)
+[2023-12-17 14:57:58.435057] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2283 seconds)
+[2023-12-17 14:58:28.468877] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2313 seconds)
+[2023-12-17 14:58:58.502226] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2343 seconds)
+[2023-12-17 14:59:28.536201] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2373 seconds)
+[2023-12-17 14:59:58.569879] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2403 seconds)
+[2023-12-17 15:00:28.603167] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2433 seconds)
+[2023-12-17 15:00:58.636726] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2463 seconds)
+[2023-12-17 15:01:28.669358] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2493 seconds)
+[2023-12-17 15:01:58.703002] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2523 seconds)
+[2023-12-17 15:02:28.737156] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2553 seconds)
+[2023-12-17 15:02:58.771021] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2583 seconds)
+[2023-12-17 15:03:28.805361] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2613 seconds)
+[2023-12-17 15:03:58.838408] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2643 seconds)
+[2023-12-17 15:04:28.872655] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2673 seconds)
+[2023-12-17 15:04:58.906207] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2703 seconds)
+[2023-12-17 15:05:28.940904] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2733 seconds)
+[2023-12-17 15:05:58.973354] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2763 seconds)
+[2023-12-17 15:06:29.008306] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2793 seconds)
+[2023-12-17 15:06:59.041544] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2823 seconds)
+[2023-12-17 15:07:29.075966] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2853 seconds)
+[2023-12-17 15:07:59.109451] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2883 seconds)
+[2023-12-17 15:08:29.144007] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2913 seconds)
+[2023-12-17 15:08:59.177676] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2943 seconds)
+[2023-12-17 15:09:29.211829] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (2973 seconds)
+[2023-12-17 15:09:59.245394] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3003 seconds)
+[2023-12-17 15:10:29.279195] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3033 seconds)
+[2023-12-17 15:10:59.312973] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3063 seconds)
+[2023-12-17 15:11:29.347428] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3093 seconds)
+[2023-12-17 15:11:59.380064] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3123 seconds)
+[2023-12-17 15:12:29.413080] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3154 seconds)
+[2023-12-17 15:12:59.445489] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3184 seconds)
+[2023-12-17 15:13:29.478703] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3214 seconds)
+[2023-12-17 15:13:59.512262] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3244 seconds)
+[2023-12-17 15:14:29.545837] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3274 seconds)
+[2023-12-17 15:14:59.579369] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3304 seconds)
+[2023-12-17 15:15:29.613398] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3334 seconds)
+[2023-12-17 15:15:59.647432] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3364 seconds)
+[2023-12-17 15:16:29.681442] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3394 seconds)
+[2023-12-17 15:16:59.714690] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3424 seconds)
+[2023-12-17 15:17:29.749531] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3454 seconds)
+[2023-12-17 15:17:59.783680] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3484 seconds)
+[2023-12-17 15:18:29.818238] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3514 seconds)
+[2023-12-17 15:18:59.850929] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3544 seconds)
+[2023-12-17 15:19:29.885395] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3574 seconds)
+[2023-12-17 15:19:59.916151] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3604 seconds)
+[2023-12-17 15:20:29.950075] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3634 seconds)
+[2023-12-17 15:20:59.983049] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3664 seconds)
+[2023-12-17 15:21:30.016901] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3694 seconds)
+[2023-12-17 15:22:00.050205] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3724 seconds)
+[2023-12-17 15:22:30.084688] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3754 seconds)
+[2023-12-17 15:23:00.118697] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3784 seconds)
+[2023-12-17 15:23:30.153187] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3814 seconds)
+[2023-12-17 15:24:00.187029] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3844 seconds)
+[2023-12-17 15:24:30.220434] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3874 seconds)
+[2023-12-17 15:25:00.253785] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3904 seconds)
+[2023-12-17 15:25:30.287196] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3934 seconds)
+[2023-12-17 15:26:00.319629] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3964 seconds)
+[2023-12-17 15:26:30.352460] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (3994 seconds)
+[2023-12-17 15:27:00.383305] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4024 seconds)
+[2023-12-17 15:27:30.416845] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4055 seconds)
+[2023-12-17 15:28:00.449439] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4085 seconds)
+[2023-12-17 15:28:30.483917] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4115 seconds)
+[2023-12-17 15:29:00.517630] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4145 seconds)
+[2023-12-17 15:29:30.551081] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4175 seconds)
+[2023-12-17 15:30:00.582874] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4205 seconds)
+[2023-12-17 15:30:30.617074] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4235 seconds)
+[2023-12-17 15:31:00.648387] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4265 seconds)
+[2023-12-17 15:31:30.682973] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4295 seconds)
+[2023-12-17 15:32:00.715541] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4325 seconds)
+[2023-12-17 15:32:30.750428] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4355 seconds)
+[2023-12-17 15:33:00.784013] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4385 seconds)
+[2023-12-17 15:33:30.818545] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4415 seconds)
+[2023-12-17 15:34:00.851850] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4445 seconds)
+[2023-12-17 15:34:30.886550] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4475 seconds)
+[2023-12-17 15:35:00.920105] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4505 seconds)
+[2023-12-17 15:35:30.954352] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4535 seconds)
+[2023-12-17 15:36:00.988250] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4565 seconds)
+[2023-12-17 15:36:31.022059] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4595 seconds)
+[2023-12-17 15:37:01.054400] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4625 seconds)
+[2023-12-17 15:37:31.088183] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4655 seconds)
+[2023-12-17 15:38:01.122342] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4685 seconds)
+[2023-12-17 15:38:31.155342] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4715 seconds)
+[2023-12-17 15:39:01.187309] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4745 seconds)
+[2023-12-17 15:39:31.220220] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4775 seconds)
+[2023-12-17 15:40:01.253498] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4805 seconds)
+[2023-12-17 15:40:31.286509] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4835 seconds)
+[2023-12-17 15:41:01.319814] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4865 seconds)
+[2023-12-17 15:41:31.353802] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4895 seconds)
+[2023-12-17 15:42:01.387886] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4926 seconds)
+[2023-12-17 15:42:31.421307] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4956 seconds)
+[2023-12-17 15:43:01.454445] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (4986 seconds)
+[2023-12-17 15:43:31.488490] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5016 seconds)
+[2023-12-17 15:44:01.522507] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5046 seconds)
+[2023-12-17 15:44:31.553531] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5076 seconds)
+[2023-12-17 15:45:01.587611] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5106 seconds)
+[2023-12-17 15:45:31.620771] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5136 seconds)
+[2023-12-17 15:46:01.654504] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5166 seconds)
+[2023-12-17 15:46:31.685988] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5196 seconds)
+[2023-12-17 15:47:01.717493] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5226 seconds)
+[2023-12-17 15:47:31.751042] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5256 seconds)
+[2023-12-17 15:48:01.784698] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5286 seconds)
+[2023-12-17 15:48:31.817132] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5316 seconds)
+[2023-12-17 15:49:01.851702] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5346 seconds)
+[2023-12-17 15:49:31.886304] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5376 seconds)
+[2023-12-17 15:50:01.919897] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5406 seconds)
+[2023-12-17 15:50:31.953198] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5436 seconds)
+[2023-12-17 15:51:01.986300] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5466 seconds)
+[2023-12-17 15:51:32.020257] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5496 seconds)
+[2023-12-17 15:52:02.054068] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5526 seconds)
+[2023-12-17 15:52:32.088052] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5556 seconds)
+[2023-12-17 15:53:02.121050] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5586 seconds)
+[2023-12-17 15:53:32.154369] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5616 seconds)
+[2023-12-17 15:54:02.186640] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5646 seconds)
+[2023-12-17 15:54:32.220349] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5676 seconds)
+[2023-12-17 15:55:02.254254] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5706 seconds)
+[2023-12-17 15:55:32.287571] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5736 seconds)
+[2023-12-17 15:56:02.322270] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5766 seconds)
+[2023-12-17 15:56:32.356601] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5796 seconds)
+[2023-12-17 15:57:02.390391] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5827 seconds)
+[2023-12-17 15:57:32.424611] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5857 seconds)
+[2023-12-17 15:58:02.459184] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5887 seconds)
+[2023-12-17 15:58:32.492856] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5917 seconds)
+[2023-12-17 15:59:02.526656] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5947 seconds)
+[2023-12-17 15:59:32.560959] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (5977 seconds)
+[2023-12-17 16:00:02.594754] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6007 seconds)
+[2023-12-17 16:00:32.626625] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6037 seconds)
+[2023-12-17 16:01:02.657917] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6067 seconds)
+[2023-12-17 16:01:32.688516] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6097 seconds)
+[2023-12-17 16:02:02.719983] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6127 seconds)
+[2023-12-17 16:02:32.753915] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6157 seconds)
+[2023-12-17 16:03:02.787993] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6187 seconds)
+[2023-12-17 16:03:32.821101] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6217 seconds)
+[2023-12-17 16:04:02.854840] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6247 seconds)
+[2023-12-17 16:04:32.888053] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6277 seconds)
+[2023-12-17 16:05:02.921926] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6307 seconds)
+[2023-12-17 16:05:32.955440] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6337 seconds)
+[2023-12-17 16:06:02.989610] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6367 seconds)
+[2023-12-17 16:06:33.023610] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6397 seconds)
+[2023-12-17 16:07:03.057730] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6427 seconds)
+[2023-12-17 16:07:33.091332] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6457 seconds)
+[2023-12-17 16:08:03.125089] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6487 seconds)
+[2023-12-17 16:08:33.159362] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6517 seconds)
+[2023-12-17 16:09:03.192439] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6547 seconds)
+[2023-12-17 16:09:33.226549] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6577 seconds)
+[2023-12-17 16:10:03.259333] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6607 seconds)
+[2023-12-17 16:10:33.291627] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6637 seconds)
+[2023-12-17 16:11:03.324648] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6667 seconds)
+[2023-12-17 16:11:33.359040] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6697 seconds)
+[2023-12-17 16:12:03.393624] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6728 seconds)
+[2023-12-17 16:12:33.427847] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6758 seconds)
+[2023-12-17 16:13:03.462102] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6788 seconds)
+[2023-12-17 16:13:33.494971] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6818 seconds)
+[2023-12-17 16:14:03.529555] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6848 seconds)
+[2023-12-17 16:14:33.563988] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6878 seconds)
+[2023-12-17 16:15:03.598594] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6908 seconds)
+[2023-12-17 16:15:33.632030] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6938 seconds)
+[2023-12-17 16:16:03.666178] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6968 seconds)
+[2023-12-17 16:16:33.699166] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (6998 seconds)
+[2023-12-17 16:17:03.731947] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7028 seconds)
+[2023-12-17 16:17:33.765334] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7058 seconds)
+[2023-12-17 16:18:03.797008] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7088 seconds)
+[2023-12-17 16:18:33.831266] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7118 seconds)
+[2023-12-17 16:19:03.865120] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7148 seconds)
+[2023-12-17 16:19:33.899442] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7178 seconds)
+[2023-12-17 16:20:03.931945] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7208 seconds)
+[2023-12-17 16:20:33.966297] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7238 seconds)
+[2023-12-17 16:21:04.000951] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7268 seconds)
+[2023-12-17 16:21:34.033738] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7298 seconds)
+[2023-12-17 16:22:04.066753] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_ext.sh (7328 seconds)
+[2023-12-17 16:22:13.147837] [openram.verify.magic/run_drc]: DRC Errors icache_tag_ram	0
+[2023-12-17 16:22:43.210957] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_lvs.sh (30 seconds)
+[2023-12-17 16:23:13.245255] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_lvs.sh (60 seconds)
+[2023-12-17 16:23:43.279521] [openram.verify.run_script/run_script]: Still running /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/run_lvs.sh (90 seconds)
+[2023-12-17 16:24:05.318313] [openram.verify.magic/run_lvs]: icache_tag_ram	LVS matches
+[2023-12-17 16:24:05.319874] ** Verification: 7450.5 seconds
+[2023-12-17 16:24:05.320463] ** SRAM creation: 9371.7 seconds
+[2023-12-17 16:24:05.321122] SP: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.sp
+[2023-12-17 16:24:05.685280] [openram.characterizer.functional/__init__]: Random seed for functional simulation: 1702851845684070623
+[2023-12-17 16:24:05.755411] ** Spice writing: 0.4 seconds
+[2023-12-17 16:24:05.756105] DELAY: Writing stimulus...
+[2023-12-17 16:24:06.595495] [openram.characterizer.delay/create_sen_and_bitline_path_measures]: self.bl_name = xicache_tag_ram.xbank0.bl_1_39
+[2023-12-17 16:24:06.601544] ** DELAY: 0.8 seconds
+[2023-12-17 16:24:06.759036] GDS: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.gds
+[2023-12-17 16:24:07.527568] ** GDS: 0.8 seconds
+[2023-12-17 16:24:07.528374] LEF: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.lef
+[2023-12-17 16:24:07.547509] ** LEF: 0.0 seconds
+[2023-12-17 16:24:07.548003] LVS: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.lvs.sp
+[2023-12-17 16:24:07.706257] ** LVS writing: 0.2 seconds
+[2023-12-17 16:24:07.706956] LIB: Characterizing... 
+[2023-12-17 16:24:07.709113] [openram.characterizer.lib/prepare_tables]: Slews: [0.00125 0.005   0.04   ]
+[2023-12-17 16:24:07.710531] [openram.characterizer.lib/prepare_tables]: Loads: [ 1.7225  6.89   27.56  ]
+[2023-12-17 16:24:07.711423] [openram.characterizer.lib/prepare_tables]: self.load_slews : [(1.7225, 0.00125), (6.89, 0.00125), (27.56, 0.00125), (1.7225, 0.005), (6.89, 0.005), (27.56, 0.005), (1.7225, 0.04), (6.89, 0.04), (27.56, 0.04)]
+[2023-12-17 16:24:07.712372] [openram.characterizer.lib/characterize_corners]: Characterizing corners: [('TT', 1.8, 25)]
+[2023-12-17 16:24:07.713226] [openram.characterizer.lib/characterize_corners]: Corner: ('TT', 1.8, 25)
+[2023-12-17 16:24:07.714238] [openram.characterizer.lib/characterize_corners]: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram_TT_1p8V_25C.lib
+[2023-12-17 16:24:07.716173] WARNING: file elmore.py: line 45: In analytical mode, all ports have the timing of the first read port.
+
+[2023-12-17 16:24:09.948497] [openram.characterizer.elmore/analytical_power]: Dynamic Power: 31722334567.715694 mW
+[2023-12-17 16:24:09.949727] [openram.characterizer.elmore/analytical_power]: Leakage Power: 0.006407 mW
+[2023-12-17 16:24:09.950653] [openram.characterizer.elmore/get_lib_values]: Slew, Load, Delay(ns), Slew(ns)
+[2023-12-17 16:24:09.952206] [openram.characterizer.elmore/get_lib_values]: 0.00125, 1.7225, 0.2813102890675501, 0.00167765625
+[2023-12-17 16:24:09.953692] [openram.characterizer.elmore/get_lib_values]: 0.00125, 6.89, 0.3103774765675501, 0.004584374999999999
+[2023-12-17 16:24:09.954862] [openram.characterizer.elmore/get_lib_values]: 0.00125, 27.56, 0.4266462265675501, 0.016211249999999996
+[2023-12-17 16:24:09.955934] [openram.characterizer.elmore/get_lib_values]: 0.005, 1.7225, 0.2813102890675501, 0.00167765625
+[2023-12-17 16:24:09.957068] [openram.characterizer.elmore/get_lib_values]: 0.005, 6.89, 0.3103774765675501, 0.004584374999999999
+[2023-12-17 16:24:09.958106] [openram.characterizer.elmore/get_lib_values]: 0.005, 27.56, 0.4266462265675501, 0.016211249999999996
+[2023-12-17 16:24:09.959559] [openram.characterizer.elmore/get_lib_values]: 0.04, 1.7225, 0.2813102890675501, 0.00167765625
+[2023-12-17 16:24:09.960688] [openram.characterizer.elmore/get_lib_values]: 0.04, 6.89, 0.3103774765675501, 0.004584374999999999
+[2023-12-17 16:24:09.961957] [openram.characterizer.elmore/get_lib_values]: 0.04, 27.56, 0.4266462265675501, 0.016211249999999996
+[2023-12-17 16:24:09.989615] ** Characterization: 2.3 seconds
+[2023-12-17 16:24:09.992270] Config: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.py
+[2023-12-17 16:24:09.992974] ** Config: 0.0 seconds
+[2023-12-17 16:24:09.996492] Datasheet: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.html
+[2023-12-17 16:24:10.001150] ** Datasheet: 0.0 seconds
+[2023-12-17 16:24:10.001729] Verilog: Writing to /home/sfs6562/OpenRAM/macro/icache_tag_ram/icache_tag_ram.v
+[2023-12-17 16:24:10.002961] ** Verilog: 0.0 seconds
+[2023-12-17 16:24:10.006257] [openram.globals/cleanup_paths]: Preserving temp directory: /home/sfs6562/OpenRAM/macro/icache_tag_ram/tmp/
+[2023-12-17 16:24:10.007279] [openram.verify.magic/print_drc_stats]: DRC runs: 1
+[2023-12-17 16:24:10.007940] [openram.verify.magic/print_lvs_stats]: LVS runs: 1
+[2023-12-17 16:24:10.008519] [openram.verify.magic/print_pex_stats]: PEX runs: 0
+[2023-12-17 16:24:10.008959] ** End: 9376.4 seconds
