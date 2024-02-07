@@ -115,6 +115,7 @@ module biriscv_pipe_ctrl
     ,output          squash_e1_e2_o
     ,input           squash_e1_e2_i
     ,input           squash_wb_i
+    ,input           timing_flush
 );
 
 //-------------------------------------------------------------
@@ -248,7 +249,7 @@ end
 else if (issue_stall_i)
     ;
 // Pipeline flush
-else if (squash_e1_e2_o || squash_e1_e2_i)
+else if (squash_e1_e2_o || squash_e1_e2_i || timing_flush)
 begin
     valid_e2_q      <= 1'b0;
     ctrl_e2_q       <= `PCINFO_W'b0;

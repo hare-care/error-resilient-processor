@@ -339,6 +339,14 @@ wire       issue_b_invalid_w  = fetch1_instr_invalid_i;
 wire        pipe0_squash_e1_e2_w;
 wire        pipe1_squash_e1_e2_w;
 
+// Timing error detection wires
+wire pipe0_timing_error_flag;
+wire pipe1_timing_error_flag;
+
+// currently always assign zero before error detection is connected
+assign pipe0_timing_error_flag = 1'b0;
+assign pipe1_timing_error_flag = 1'b0;
+
 reg         opcode_a_issue_r;
 reg         opcode_a_accept_r;
 wire        pipe0_stall_raw_w;
@@ -439,6 +447,7 @@ u_pipe0_ctrl
     ,.stall_o(pipe0_stall_raw_w)
     ,.squash_e1_e2_o(pipe0_squash_e1_e2_w)
     ,.squash_e1_e2_i(pipe1_squash_e1_e2_w)
+    ,.timing_flush(pipe0_timing_error_flag)
     ,.squash_wb_i(1'b0)
 
     // Out of pipe: Divide Result
@@ -565,6 +574,7 @@ u_pipe1_ctrl
     ,.stall_o(pipe1_stall_raw_w)
     ,.squash_e1_e2_o(pipe1_squash_e1_e2_w)
     ,.squash_e1_e2_i(pipe0_squash_e1_e2_w)
+    ,.timing_flush(pipe1_timing_error_flag)
     ,.squash_wb_i(pipe0_squash_e1_e2_w)
 
     // Out of pipe: Divide Result
