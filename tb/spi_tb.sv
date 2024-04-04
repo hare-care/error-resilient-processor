@@ -6,9 +6,10 @@ localparam SPI_CLOCK_PERIOD = 50;
 
 logic clock = 1'b1;
 logic sclk = 1'b0;
-logic reset = 1'b0;
+logic reset = 1'b1;
 logic start = 1'b0;
-logic done = 1'b0;
+logic done;
+logic sclk_flag = 1'b0;
 
 logic        in_full;
 logic        in_wr_en  = '0;
@@ -22,35 +23,58 @@ logic   in_write_done = '0;
 logic   out_read_done = '0;
 integer out_errors    = '0;
 
-always begin
-    clock = 1'b1;
+always begin 
+    clock <= 1'b1;
     #(CLOCK_PERIOD/2);
-    clock = 1'b0;
+    clock <= 1'b0;
     #(CLOCK_PERIOD/2);
 end
 
-// run sclk when the flag is up, flag up when data being transferred
 always begin
+    wait(sclk_flag);
     if (sclk_flag) begin
-        sclk = 1'b1;
+        sclk <= 1'b1;
         #(SPI_CLOCK_PERIOD/2);
-        sclk = 1'b0;
+        sclk <= 1'b0;
         #(SPI_CLOCK_PERIOD/2);
     end
 end
 
+logic cs, mosi, miso;
+
+slave_spi DUT(
+    .sclk(sclk),
+    .cs(cs),
+    .mosi(mosi),
+    .rstn(reset),
+    .miso(miso)
+);
+
+
+
+// run sclk when the flag is up, flag up when data being transferred
+// always @(*) begin
+//     if (sclk_flag) begin
+//     sclk <= 1'b1;
+//     #(SPI_CLOCK_PERIOD/2);
+//     sclk <= 1'b0;
+//     #(SPI_CLOCK_PERIOD/2);
+//     end
+// end
+
+
 // regular clock
 initial begin
     @(posedge clock);
-    reset = 1'b1;
-    @(posedge clock);
     reset = 1'b0;
+    @(posedge clock);
+    reset = 1'b1;
 end
 
 initial begin : tb_process
     longint unsigned start_time, end_time;
 
-    @(negedge reset);
+    @(posedge reset);
     @(posedge clock);
     start_time = $time;
 
@@ -70,6 +94,13 @@ initial begin : tb_process
 
     // end the simulation
     $finish;
+end
+
+initial begin: sclk_testing
+    wait(start);
+    sclk_flag = 1'b1;
+    #1000
+    done = 1'b1;
 end
 
 
