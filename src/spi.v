@@ -43,10 +43,10 @@ reg [2:0] state, state_c;
 reg [71:0] data_store;
 reg [71:0] data_store_c;
 reg [2:0] sync;
-reg [2:0] read_sync;
 reg [31:0] data_adr, data_adr_c;
 reg start_flag_c;
-reg out_flag, out_flag_c;
+reg [2:0] read_sync;
+reg out_flag_c;
 wire valid;
 
 assign valid = !sync[2] & sync[1];
@@ -57,9 +57,12 @@ assign valid = !sync[2] & sync[1];
 always @(posedge sclk or negedge rstn) begin
     if (!rstn) begin
         data_store <= 72'b0;
+        read_sync <= 2'b0;
     end
     else begin
         data_store[71:0] <= data_store_c[71:0];
+        read_sync[2:1] <= read_sync[1:0];
+        read_sync[0] <= out_flag_c;
     end
 end
 
@@ -68,12 +71,12 @@ always @(posedge clk or negedge rstn) begin
         state <= s0;
         sync <= 3'b111;
         start_flag <= 1'b0;
-        out_flag <= 1'b0;
+        
         data_adr <= 32'b0;
     end
     else begin
         start_flag <= start_flag_c;
-        out_flag   <= out_flag_c;
+        
         state      <= state_c;
         sync[2:1]  <= sync[1:0];
         sync[0]    <= cs;
@@ -97,7 +100,7 @@ always @(*) begin
     if (!cs) begin
         data_store_c[71:1] = data_store[70:0];
         data_store_c[0] = mosi;
-    end else if (out_flag) begin 
+    end else if (read_sync == 3'b111) begin 
         data_store_c[71:1] = data_store[70:0];
         data_store_c[0] = 1'b0;
         miso = data_store[71];
@@ -144,25 +147,29 @@ always @(*) begin
         s3: begin
             // read out memory - getting data out of memory
             data_adr_c = data_store[63:32];
+            mem_d_rd_o = 1'b1;
             state_c = s6;
         end
         s6: begin
-            out_flag_c = 1'b1;
-            if (out_flag) begin
+            //out_flag_c = 1'b1;
+            mem_d_rd_o = 1'b1;
+            //if (out_flag) begin
             state_c = s7;
-            end else begin
-                state_c = s6;
-            end
+            //end else begin
+            //    state_c = s6;
+            //end
         end
         s7: begin
-            if (mem_accept) begin
-                data_store_c[71:68] = 4'b0; 
-                data_store_c[67:64] = 4'b1111;
-                data_store_c[63:32] = data_store[63:32];
-                data_store_c[31:0] = data_rd_i;
+            mem_d_rd_o = 1'b1;
+            out_flag_c = 1'b1;
+            data_store_c[71:68] = 4'b0; 
+            data_store_c[67:64] = 4'b1111;
+            data_store_c[63:32] = data_store[63:32];
+            data_store_c[31:0] = data_rd_i;
+            if (read_sync == 3'b111) begin
                 state_c = s4;
             end else begin
-                state_c = s6;
+                state_c = s7;
             end
         end
         s4: begin

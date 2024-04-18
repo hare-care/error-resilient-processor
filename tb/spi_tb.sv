@@ -4,8 +4,8 @@ module spi_tb();
 localparam string INSTR_IN  = "./tb/instructions.txt";
 localparam string MEM_IN = "./tb/tcm.bin";
 
-localparam CLOCK_PERIOD = 10;
-localparam SPI_CLOCK_PERIOD = 25;
+localparam CLOCK_PERIOD = 20;
+localparam SPI_CLOCK_PERIOD = 100;
 
 logic clock = 1'b1;
 logic sclk = 1'b0;
@@ -28,7 +28,8 @@ logic   in_write_done = '0;
 logic   out_read_done = '0;
 integer out_errors    = '0;
 
-logic cs, mosi, miso, p_start;
+logic mosi, miso, p_start;
+logic cs = 1'b1;
 
 reg [7:0] mem[255:0];//131072
 integer j;
@@ -197,7 +198,6 @@ initial begin : mem_in_process
     j = $fread(mem, f);
     for (j=0;j<256;j=j+1)  //131072
         u_mem.write(j, mem[j]);
-        //$display("loading in: %x\n", mem[j]);
     mem_done = 1'b1;
     $fclose(f);
 end
@@ -217,7 +217,7 @@ initial begin: data_in_test
     @(posedge clock);
     cs = 1'b0;
     sclk_flag = 1'b1;
-    #5500
+    #50500
     done = 1'b1;
 
 end
@@ -256,6 +256,9 @@ initial begin: miso_data_out
         @(posedge sclk);
         miso_data_out[71:1] = miso_data_out[70:0];
         miso_data_out[0] = miso;
+        if (miso_data_out == 72'h0F000000101140006F) begin
+            done = 1'b1;
+        end
     end
 end
 
