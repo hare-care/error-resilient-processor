@@ -110,7 +110,7 @@ slave_spi DUT(
     .miso(miso),
     .start_flag(p_start),
     .data_rd_i(mem_d_data_rd_w),
-    .mem_d_rd_o(mem_d_rd_o_spi),
+    .data_rd_en_o(mem_d_rd_o_spi),
     .data_adr_o(data_adr_o_spi),
     .data_wr_o(data_wr_o_spi),
     .data_wr_en_o(data_wr_en_o_spi),
