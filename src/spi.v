@@ -24,7 +24,7 @@ module slave_spi #(
     input clk, sclk, cs, mosi, rstn,
     input mem_ack, mem_accept,
     input [31:0] data_rd_i,
-    output reg miso, start_flag, mem_d_rd_o,
+    output reg miso, start_flag, data_rd_en_o,
     output reg [31:0] data_adr_o, data_wr_o,
     output reg [3:0] data_wr_en_o
 
