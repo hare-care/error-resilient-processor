@@ -98,9 +98,15 @@ module biriscv_mmu
     ,output          lsu_out_flush_o
     ,output          lsu_in_load_fault_o
     ,output          lsu_in_store_fault_o
+    ,output error_mmu // mmu error
 );
 
-
+Top_mmu u_Top_mmu(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(lsu_in_wr_i[0]),
+    .error(error_mmu)
+);
 
 //-----------------------------------------------------------------
 // Includes

@@ -87,6 +87,7 @@ module riscv_core
     ,output          mem_i_flush_o
     ,output          mem_i_invalidate_o
     ,output [ 31:0]  mem_i_pc_o
+    ,output timing_error
 );
 
 wire           mmu_lsu_writeback_w;
@@ -256,6 +257,17 @@ wire  [ 31:0]  csr_writeback_exception_pc_w;
 wire           fetch1_instr_mul_w;
 wire           mmu_store_fault_w;
 
+wire error_frontend;
+wire error_issue;
+wire error_csr;
+wire error_multiplier;
+wire error_divider;
+wire error_lsu;
+wire error_mmu;
+wire error_exec0, error_exec1, error_exec;
+wire error_flag;
+
+assign error_exec = error_exec0 | error_exec1;
 
 biriscv_frontend
 #(
@@ -334,6 +346,7 @@ u_frontend
     ,.fetch1_instr_csr_o(fetch1_instr_csr_w)
     ,.fetch1_instr_rd_valid_o(fetch1_instr_rd_valid_w)
     ,.fetch1_instr_invalid_o(fetch1_instr_invalid_w)
+    ,.error_frontend(error_frontend)
 );
 
 
@@ -407,6 +420,7 @@ u_mmu
     ,.lsu_out_flush_o(mem_d_flush_o)
     ,.lsu_in_load_fault_o(mmu_load_fault_w)
     ,.lsu_in_store_fault_o(mmu_store_fault_w)
+    ,.error_mmu(error_mmu)
 );
 
 
@@ -455,6 +469,7 @@ u_lsu
     ,.writeback_value_o(writeback_mem_value_w)
     ,.writeback_exception_o(writeback_mem_exception_w)
     ,.stall_o(lsu_stall_w)
+    ,.error_lsu(error_lsu)
 );
 
 
@@ -507,6 +522,7 @@ u_csr
     ,.mmu_mxr_o(mmu_mxr_w)
     ,.mmu_flush_o(mmu_flush_w)
     ,.mmu_satp_o(mmu_satp_w)
+    ,.error_csr(error_csr)
 );
 
 
@@ -533,6 +549,7 @@ u_mul
 
     // Outputs
     ,.writeback_value_o(writeback_mul_value_w)
+    ,.error_multiplier(error_multiplier)
 );
 
 
@@ -559,6 +576,7 @@ u_div
     // Outputs
     ,.writeback_valid_o(writeback_div_valid_w)
     ,.writeback_value_o(writeback_div_value_w)
+    ,.error_divider(error_divider)
 );
 
 
@@ -644,6 +662,7 @@ u_issue
     ,.csr_result_e1_exception_i(csr_result_e1_exception_w)
     ,.lsu_stall_i(lsu_stall_w)
     ,.take_interrupt_i(take_interrupt_w)
+    ,.error_flag(error_flag)
 
     // Outputs
     ,.fetch0_accept_o(fetch0_accept_w)
@@ -715,6 +734,7 @@ u_issue
     ,.exec1_hold_o(exec1_hold_w)
     ,.mul_hold_o(mul_hold_w)
     ,.interrupt_inhibit_o(interrupt_inhibit_w)
+    ,.error_issue(error_issue)
 );
 
 
@@ -752,6 +772,7 @@ u_exec0
     ,.branch_d_pc_o(branch_d_exec0_pc_w)
     ,.branch_d_priv_o(branch_d_exec0_priv_w)
     ,.writeback_value_o(writeback_exec0_value_w)
+    ,.error_exec(error_exec0)
 );
 
 
@@ -789,8 +810,25 @@ u_exec1
     ,.branch_d_pc_o(branch_d_exec1_pc_w)
     ,.branch_d_priv_o(branch_d_exec1_priv_w)
     ,.writeback_value_o(writeback_exec1_value_w)
+    ,.error_exec(error_exec1)
 );
 
+error_handling
+error_handler
+(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .error_csr(error_csr),
+    .error_divider(error_divider),
+    .error_exec(error_exec),
+    .error_frontend(error_frontend),
+    .error_issue(error_issue),
+    .error_lsu(error_lsu),
+    .error_mmu(error_mmu),
+    .error_multiplier(error_multiplier),
+    .error_out(error_flag)
+);
 
+assign timing_error = error_flag;
 
 endmodule

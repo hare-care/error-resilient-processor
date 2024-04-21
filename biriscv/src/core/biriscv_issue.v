@@ -110,6 +110,7 @@ module biriscv_issue
     ,input  [  5:0]  csr_result_e1_exception_i
     ,input           lsu_stall_i
     ,input           take_interrupt_i
+    ,input error_flag // error flag
 
     // Outputs
     ,output          fetch0_accept_o
@@ -181,8 +182,15 @@ module biriscv_issue
     ,output          exec1_hold_o
     ,output          mul_hold_o
     ,output          interrupt_inhibit_o
+    ,output error_issue // issue error
 );
 
+Top_issue u_Top_issue(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(writeback_div_valid_i),
+    .error(error_issue)
+);
 
 
 `include "biriscv_defs.v"
@@ -339,13 +347,13 @@ wire       issue_b_invalid_w  = fetch1_instr_invalid_i;
 wire        pipe0_squash_e1_e2_w;
 wire        pipe1_squash_e1_e2_w;
 
-// Timing error detection wires
+// timing error detection wires
 wire pipe0_timing_error_flag;
 wire pipe1_timing_error_flag;
 
 // currently always assign zero before error detection is connected
-assign pipe0_timing_error_flag = 1'b0;
-assign pipe1_timing_error_flag = 1'b0;
+assign pipe0_timing_error_flag = error_flag;
+assign pipe1_timing_error_flag = error_flag;
 
 reg         opcode_a_issue_r;
 reg         opcode_a_accept_r;
@@ -393,6 +401,7 @@ u_pipe0_ctrl
     `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)    
+    ,.timing_flush(pipe0_timing_error_flag)
 
     // Issue
     ,.issue_valid_i(opcode_a_issue_r)
@@ -447,7 +456,6 @@ u_pipe0_ctrl
     ,.stall_o(pipe0_stall_raw_w)
     ,.squash_e1_e2_o(pipe0_squash_e1_e2_w)
     ,.squash_e1_e2_i(pipe1_squash_e1_e2_w)
-    ,.timing_flush(pipe0_timing_error_flag)
     ,.squash_wb_i(1'b0)
 
     // Out of pipe: Divide Result
@@ -520,6 +528,7 @@ u_pipe1_ctrl
     `endif
      .clk_i(clk_i)
     ,.rst_i(rst_i)
+    ,.timing_flush(pipe1_timing_error_flag)
 
     // Issue
     ,.issue_valid_i(opcode_b_issue_r)
@@ -574,7 +583,6 @@ u_pipe1_ctrl
     ,.stall_o(pipe1_stall_raw_w)
     ,.squash_e1_e2_o(pipe1_squash_e1_e2_w)
     ,.squash_e1_e2_i(pipe0_squash_e1_e2_w)
-    ,.timing_flush(pipe1_timing_error_flag)
     ,.squash_wb_i(pipe0_squash_e1_e2_w)
 
     // Out of pipe: Divide Result

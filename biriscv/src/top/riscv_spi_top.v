@@ -3,8 +3,10 @@ module riscv_new_top(
         inout vccd1,
         inout vssd1,
     `endif
-    input clk,
+    input clk, spi_clk, spi_cs, spi_mosi,
     input rst,
+    output spi_miso,
+    output error_flag,
     output [63:0]instruction,
     output [31:0]data_write,
     output [31:0]data_read,
@@ -37,6 +39,29 @@ assign instruction=mem_i_inst_w;
 assign pc=mem_i_pc_w;
 assign data_write=mem_d_data_wr_w;
 assign data_read=mem_d_data_rd_w;
+
+wire p_start_flag, data_rd_en_o_spi;
+wire [31:0] data_adr_o_spi, data_wr_o_spi;
+wire [3:0] data_wr_en_o_spi;
+
+assign error_flag = timing_error;
+
+// logic to keep cpu off
+wire rst_cpu;
+assign rst_cpu = rst | !p_start_flag;
+
+// logic to give spi priority for mem access
+// if spi rd or wr are on, then use the spi signals otherwise use the cpu signals
+wire [31:0] mem_d_addr_w_mux, mem_d_data_wr_w_mux;
+wire mem_d_rd_w_mux;
+wire [3:0] mem_d_wr_w_mux;
+
+assign mem_d_addr_w_mux = ((data_rd_en_o_spi | data_wr_en_o_spi[0]))? data_adr_o_spi : mem_d_addr_w;
+assign mem_d_data_wr_w_mux = ((data_rd_en_o_spi | data_wr_en_o_spi[0]))? data_wr_o_spi : mem_d_data_wr_w;
+assign mem_d_rd_w_mux = data_rd_en_o_spi | mem_d_rd_w;
+assign mem_d_wr_w_mux = data_wr_en_o_spi | mem_d_wr_w;
+
+
 riscv_core
 u_dut
 //-----------------------------------------------------------------
@@ -49,7 +74,7 @@ u_dut
     `endif
     // Inputs
      .clk_i(clk)
-    ,.rst_i(rst)
+    ,.rst_i(rst_cpu)
     ,.mem_d_data_rd_i(mem_d_data_rd_w)
     ,.mem_d_accept_i(mem_d_accept_w)
     ,.mem_d_ack_i(mem_d_ack_w)
@@ -80,6 +105,25 @@ u_dut
     ,.timing_error(timing_error)
 );
 
+slave_spi
+u_spi
+(
+    .sclk(spi_clk),
+    .clk(clk),
+    .cs(spi_cs),
+    .mosi(spi_mosi),
+    .rstn(!rst),
+    .miso(spi_miso),
+    .start_flag(p_start_flag),
+    .data_rd_i(mem_d_data_rd_w),
+    .data_rd_en_o(data_rd_en_o_spi),
+    .data_adr_o(data_adr_o_spi),
+    .data_wr_o(data_wr_o_spi),
+    .data_wr_en_o(data_wr_en_o_spi),
+    .mem_ack(mem_d_ack_w),
+    .mem_accept(mem_d_accept_w)
+);
+
 tcm_mem
 u_mem
 (
@@ -94,10 +138,10 @@ u_mem
     ,.mem_i_flush_i(mem_i_flush_w)
     ,.mem_i_invalidate_i(mem_i_invalidate_w)
     ,.mem_i_pc_i(mem_i_pc_w)
-    ,.mem_d_addr_i(mem_d_addr_w)
-    ,.mem_d_data_wr_i(mem_d_data_wr_w)
-    ,.mem_d_rd_i(mem_d_rd_w)
-    ,.mem_d_wr_i(mem_d_wr_w)
+    ,.mem_d_addr_i(mem_d_addr_w_mux)
+    ,.mem_d_data_wr_i(mem_d_data_wr_w_mux)
+    ,.mem_d_rd_i(mem_d_rd_w_mux)
+    ,.mem_d_wr_i(mem_d_wr_w_mux)
     ,.mem_d_cacheable_i(mem_d_cacheable_w)
     ,.mem_d_req_tag_i(mem_d_req_tag_w)
     ,.mem_d_invalidate_i(mem_d_invalidate_w)

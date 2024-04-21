@@ -77,6 +77,14 @@ module biriscv_csr
     ,output          mmu_mxr_o
     ,output          mmu_flush_o
     ,output [ 31:0]  mmu_satp_o
+    ,output error_csr // error signal
+);
+
+Top_csr u_Top_Csr(
+    .clk(clk_i),
+    .rst(!rst_i),
+    .data_sample(opcode_opcode_i[25]),
+    .error(error_csr)
 );
 
 

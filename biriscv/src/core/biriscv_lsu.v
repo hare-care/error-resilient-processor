@@ -73,9 +73,15 @@ module biriscv_lsu
     ,output [ 31:0]  writeback_value_o
     ,output [  5:0]  writeback_exception_o
     ,output          stall_o
+    ,output error_lsu // lsu error
 );
 
-
+Top_lsu u_Top_lsu(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(mem_ack_i),
+    .error(error_lsu)
+);
 
 //-----------------------------------------------------------------
 // Includes

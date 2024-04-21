@@ -56,8 +56,15 @@ module biriscv_exec
     ,output [ 31:0]  branch_d_pc_o
     ,output [  1:0]  branch_d_priv_o
     ,output [ 31:0]  writeback_value_o
+    ,output error_exec // exec error
 );
 
+Top_exec u_Top_exec(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(opcode_opcode_i[31]),
+    .error(error_exec)
+);
 
 
 //-----------------------------------------------------------------

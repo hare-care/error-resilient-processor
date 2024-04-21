@@ -45,9 +45,15 @@ module biriscv_multiplier
 
     // Outputs
     ,output [ 31:0]  writeback_value_o
+    ,output error_multiplier // multiplier error
 );
 
-
+Top_multiplier u_Top_multiplier(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(opcode_rb_operand_i[3]),
+    .error(error_multiplier)
+);
 
 //-----------------------------------------------------------------
 // Includes

@@ -105,6 +105,14 @@ module biriscv_frontend
     ,output          fetch1_instr_csr_o
     ,output          fetch1_instr_rd_valid_o
     ,output          fetch1_instr_invalid_o
+    ,output error_frontend // frontend error
+);
+
+Top_frontend u_Top_frontend(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(icache_valid_i),
+    .error(error_frontend)
 );
 
 wire           fetch_valid_w;

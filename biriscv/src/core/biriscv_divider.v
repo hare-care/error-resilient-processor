@@ -45,6 +45,14 @@ module biriscv_divider
     // Outputs
     ,output          writeback_valid_o
     ,output [ 31:0]  writeback_value_o
+    ,output error_divider // divider error
+);
+
+Top_divider u_Top_divider(
+    .clk(clk_i),
+    .nrst(!rst_i),
+    .data_sample(opcode_rb_operand_i[3]),
+    .error(error_divider)
 );
 
 
